@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - DriveMaster</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d9488' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2'/><circle cx='7' cy='17' r='2'/><path d='M9 17h6'/><circle cx='17' cy='17' r='2'/></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 900: '#134e4a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300">
+    <!-- sivanika -->
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside
+            class="hidden md:flex flex-col w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 h-full fixed left-0 top-0 z-20">
+            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center gap-3">
+                <div
+                    class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform">
+                    <i data-lucide="car" class="w-6 h-6"></i>
+                </div>
+                <span class="font-heading font-bold text-lg">DriveMaster</span>
+            </div>
+
+            <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+                <a href="dashboard.html"
+                    class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 rounded-xl font-medium transition-colors">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+                </a>
+                <a href="dashboard-bookings.html"
+                    class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 rounded-xl font-medium transition-colors">
+                    <i data-lucide="calendar" class="w-5 h-5"></i> My Bookings
+                </a>
+                <a href="dashboard-courses.html"
+                    class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 rounded-xl font-medium transition-colors">
+                    <i data-lucide="graduation-cap" class="w-5 h-5"></i> My Courses
+                </a>
+                <a href="dashboard-messages.html"
+                    class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 rounded-xl font-medium transition-colors">
+                    <i data-lucide="mail" class="w-5 h-5"></i> Messages
+                </a>
+                <a href="dashboard-settings.html"
+                    class="flex items-center gap-3 px-4 py-3 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 rounded-xl font-semibold transition-colors">
+                    <i data-lucide="settings" class="w-5 h-5"></i> Settings
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800">
+                <a href="index.html"
+                    class="flex items-center gap-3 px-4 py-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl w-full transition-colors text-sm font-medium">
+                    <i data-lucide="log-out" class="w-5 h-5"></i> Log Out
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <!-- siv@nik@ -->
+        <main class="flex-1 md:ml-64 overflow-y-auto w-full">
+            <header
+                class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 h-20 px-4 md:px-8 flex items-center justify-between sticky top-0 z-10 opacity-95 backdrop-blur">
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden p-2 text-slate-600 dark:text-slate-300">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                    <h1 class="text-xl font-heading font-bold dark:text-white">Settings</h1>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <button
+                        class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-2 rounded-lg text-sm font-bold transition-colors shadow-lg shadow-brand-500/30">
+                        Save Changes
+                    </button>
+                    <div class="hidden md:block text-right">
+                        <div class="font-bold text-slate-900 dark:text-white text-sm">Student Name</div>
+                        <div class="text-xs text-slate-500">student@example.com</div>
+                    </div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border-2 border-white dark:border-slate-600 shadow-sm">
+                        <img src="https://ui-avatars.com/api/?name=Student+Name&background=0d9488&color=fff"
+                            alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </header>
+
+            <div class="p-4 md:p-8 max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-8">
+
+                    <!-- Profile Settings -->
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-8">
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                            <i data-lucide="user" class="w-5 h-5 text-brand-600"></i> Profile Information
+                        </h3>
+                        <form class="space-y-5">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Full
+                                    Name</label>
+                                <input type="text"
+                                    class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none focus:border-brand-500 transition-all"
+                                    value="Student Name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Email
+                                    Address</label>
+                                <input type="email"
+                                    class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none focus:border-brand-500 transition-all"
+                                    value="student@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Phone
+                                    Number</label>
+                                <input type="tel"
+                                    class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none focus:border-brand-500 transition-all"
+                                    value="+1 (555) 123-4567">
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Address</label>
+                                <textarea
+                                    class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none focus:border-brand-500 transition-all"
+                                    rows="3">123 Main St, Cityville, ST 12345</textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-lg shadow-brand-500/20 transition-all">Update
+                                Profile</button>
+                        </form>
+                    </div>
+
+                    <!-- Side Column -->
+                    <div class="space-y-8">
+                        <!-- Password -->
+                        <div
+                            class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-8">
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                                <i data-lucide="lock" class="w-5 h-5 text-brand-600"></i> Security
+                            </h3>
+                            <form class="space-y-5">
+                                <div>
+                                    <label
+                                        class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Current
+                                        Password</label>
+                                    <input type="password"
+                                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none focus:border-brand-500 transition-all">
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">New
+                                        Password</label>
+                                    <input type="password"
+                                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none focus:border-brand-500 transition-all">
+                                </div>
+                                <button type="submit"
+                                    class="w-full py-3 bg-white dark:bg-slate-700 text-slate-700 dark:text-white border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 font-bold rounded-xl transition-all">Change
+                                    Password</button>
+                            </form>
+                        </div>
+
+                        <!-- Preferences -->
+                        <div
+                            class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-8">
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                                <i data-lucide="sliders" class="w-5 h-5 text-brand-600"></i> Preferences
+                            </h3>
+                            <div class="space-y-6">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Dark
+                                        Mode</span>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="settings-theme-toggle" class="sr-only peer">
+                                        <div
+                                            class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600">
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Email
+                                        Notifications</span>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" checked class="sr-only peer">
+                                        <div
+                                            class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600">
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">SMS
+                                        Notifications</span>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer">
+                                        <div
+                                            class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600">
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Theme Logic for Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            // Sync check
+            const toggle = document.getElementById('settings-theme-toggle');
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                toggle.checked = true;
+                document.documentElement.classList.add('dark');
+            } else {
+                toggle.checked = false;
+                document.documentElement.classList.remove('dark');
+            }
+
+            toggle.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                }
+            });
+        });
+    </script>
+    <script>
+        lucide.createIcons();
+    </script>
+    <!-- siva@03nika -->
+</body>
+
+</html>

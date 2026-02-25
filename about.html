@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | DriveMaster</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d9488' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2'/><circle cx='7' cy='17' r='2'/><path d='M9 17h6'/><circle cx='17' cy='17' r='2'/></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 900: '#134e4a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Styles */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        body.ltr {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300 font-sans ltr">
+
+    <!-- NAVIGATION -->
+    <nav
+        class="fixed w-full z-50 transition-all duration-300 glass-panel border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
+                    <div
+                        class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform">
+                        <i data-lucide="car" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-xl tracking-tight leading-none">DriveMaster</span>
+                        <span class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Professional
+                            School</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-1 xl:gap-2">
+                    <div class="relative group px-2 py-2">
+                        <button
+                            class="flex items-center gap-1 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+                            Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </button>
+                        <div
+                            class="absolute left-0 top-full mt-2 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 p-1">
+                            <a href="index.html"
+                                class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">Classic
+                                Style</a>
+                            <a href="home2.html"
+                                class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">Modern
+                                SaaS</a>
+                        </div>
+                    </div>
+                    <a href="about.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-bold text-brand-600 dark:text-brand-400 transition-colors">About</a>
+                    <a href="services.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Services</a>
+                    <a href="gallery.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Gallery</a>
+                    <a href="contact.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Contact</a>
+                        <a href="admin.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Admin</a>  
+                        <div class="h-4 w-px bg-slate-300 dark:bg-slate-700 mx-1 xl:mx-2"></div>
+                    <a href="booking.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-bold text-brand-600 hover:text-brand-700 transition-colors border border-brand-200 rounded-lg bg-brand-50 dark:bg-brand-900/20 dark:border-brand-800">Book
+                        Test</a>
+                </div>
+
+                <!-- Controls -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button onclick="toggleRTL()" class="p-2 text-slate-500 hover:text-brand-600 transition-colors"><i
+                            data-lucide="languages" class="w-5 h-5"></i></button>
+                    <button onclick="toggleDarkMode()"
+                        class="p-2 text-slate-500 hover:text-brand-600 transition-colors"><i id="theme-icon"
+                            data-lucide="moon" class="w-5 h-5"></i></button>
+                    <a href="dashboard.html" class="p-2 text-slate-500 hover:text-brand-600 transition-colors"
+                        title="My Dashboard">
+                        <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                    </a>
+                    <div class="h-6 w-px bg-slate-300 dark:bg-slate-700"></div>
+                    <a href="login.html"
+                        class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">Login</a>
+                    <a href="register.html"
+                        class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">Sign
+                        up
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-4">
+                    <button onclick="toggleMobileMenu()" class="p-2 text-slate-600 dark:text-slate-200"><i
+                            data-lucide="menu" class="w-6 h-6"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed bg-white dark:bg-slate-900 z-40 hidden flex-col p-6 space-y-6 lg:hidden">
+            <div class="flex justify-between items-center mb-4">
+                <span class="font-heading font-bold text-xl">Menu</span>
+                <button onclick="toggleMobileMenu()"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <a href="index.html" class="text-lg font-medium border-b pb-2">Home</a>
+            <a href="home2.html" class="text-lg font-medium border-b pb-2">Modern Home</a>
+            <a href="about.html" class="text-lg font-bold border-b pb-2 text-brand-600">About Us</a>
+            <a href="services.html" class="text-lg font-medium border-b pb-2">Services</a>
+            <a href="gallery.html" class="text-lg font-medium border-b pb-2">Gallery</a>
+            <a href="contact.html" class="text-lg font-medium border-b pb-2">Contact</a>
+            <a href="login.html" class="text-lg font-medium border-b pb-2">Login</a>
+            <a href="register.html" class="text-lg font-medium border-b pb-2">Register</a>
+            <a href="dashboard.html" class="text-lg font-medium border-b pb-2 text-brand-600">My
+                Dashboard</a>
+            <a href="admin.html" class="text-lg font-medium border-b pb-2 text-brand-600">Admin</a> 
+            <!-- Mobile Controls -->
+            <div class="flex items-center gap-4 mt-4">
+                <button onclick="toggleRTL()"
+                    class="p-2 border rounded-lg text-slate-500 hover:text-brand-600 flex items-center gap-2 w-full justify-center">
+                    <i data-lucide="languages" class="w-5 h-5"></i> <span>RTL/LTR</span>
+                </button>
+                <button onclick="toggleDarkMode()"
+                    class="p-2 border rounded-lg text-slate-500 hover:text-brand-600 flex items-center gap-2 w-full justify-center">
+                    <i id="mobile-theme-icon" data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
+                </button>
+            </div>
+
+            <a href="booking.html"
+                class="w-full bg-brand-600 text-white py-4 rounded-xl font-bold mt-2 text-center">Start Learning</a>
+        </div>
+    </nav>
+
+    <main class="pt-20 min-h-screen">
+        <!-- VIEW: ABOUT US -->
+        <div id="view-about" class="page-view">
+            <!-- 1. Hero Header (Banner) -->
+            <div class="bg-slate-900 py-20 text-center text-white relative overflow-hidden">
+                <div
+                    class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+                </div>
+                <div class="max-w-4xl mx-auto px-4 relative z-10">
+                    <h1 class="text-5xl font-heading font-bold mb-6">About Us</h1>
+                    <p class="text-slate-300 text-lg">Building Safer Drivers Since 2010. Our mission is to make the
+                        roads safer, one driver at a time.</p>
+                </div>
+            </div>
+
+            <!-- 2. Core Values (New) -->
+            <section class="py-20 bg-slate-50 dark:bg-slate-800">
+                <div class="max-w-7xl mx-auto px-4">
+                    <h2 class="text-3xl font-heading font-bold mb-12 text-center text-slate-900 dark:text-white">Our
+                        Core Values</h2>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 bg-brand-100 dark:bg-brand-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-brand-600">
+                                <i data-lucide="heart" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Patience</h4>
+                            <p class="text-sm text-slate-500">We understand everyone learns at their own speed.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600">
+                                <i data-lucide="shield" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Safety</h4>
+                            <p class="text-sm text-slate-500">Defensive driving is the foundation of every lesson.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-purple-600">
+                                <i data-lucide="zap" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Innovation</h4>
+                            <p class="text-sm text-slate-500">Using tech to enhance the learning experience.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-orange-600">
+                                <i data-lucide="award" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Excellence</h4>
+                            <p class="text-sm text-slate-500">98% pass rate because we don't settle for less.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Our Story (Split Layout) -->
+            <section class="py-20 bg-white dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+                    <div class="relative">
+                        <div
+                            class="absolute -top-4 -left-4 w-24 h-24 bg-brand-100 dark:bg-brand-900/30 rounded-full blur-2xl">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800"
+                            class="rounded-3xl shadow-2xl relative z-10" alt="Instructor and student">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-heading font-bold mb-6 text-slate-900 dark:text-white">Our Mission &
+                            Story</h2>
+                        <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                            We believe driving is a life skill, not just a test to pass. Over the last decade, we've
+                            evolved from a small local school to a premier institution leveraging technology to enhance
+                            the learning experience.
+                        </p>
+                        <ul class="space-y-4 mt-8">
+                            <li class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm text-brand-600">
+                                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">Safety First</h4>
+                                    <p class="text-sm text-slate-500">Dual-control cars and certified defensive driving
+                                        techniques.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm text-brand-600">
+                                    <i data-lucide="users" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">Community Focused</h4>
+                                    <p class="text-sm text-slate-500">Scholarships for underprivileged youth.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Timeline / History -->
+            <section class="py-20 bg-slate-50 dark:bg-slate-800">
+                <div class="max-w-4xl mx-auto px-4">
+                    <h2 class="text-3xl font-heading font-bold mb-12 text-center text-slate-900 dark:text-white">Our
+                        Journey</h2>
+                    <div class="relative border-l-2 border-brand-200 dark:border-brand-900 ml-4 md:ml-6 space-y-12">
+                        <div class="relative pl-8 md:pl-12">
+                            <div
+                                class="absolute -left-[9px] top-1 w-4 h-4 bg-brand-500 rounded-full ring-4 ring-white dark:ring-slate-800">
+                            </div>
+                            <span class="text-sm font-bold text-brand-600">2010</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Founded</h3>
+                            <p class="text-slate-500 mt-2">Started with 1 car and 2 instructors in a small garage.</p>
+                        </div>
+                        <div class="relative pl-8 md:pl-12">
+                            <div
+                                class="absolute -left-[9px] top-1 w-4 h-4 bg-brand-500 rounded-full ring-4 ring-white dark:ring-slate-800">
+                            </div>
+                            <span class="text-sm font-bold text-brand-600">2015</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Expansion</h3>
+                            <p class="text-slate-500 mt-2">Expanded to 3 locations and introduced the "Teen Safety"
+                                program.</p>
+                        </div>
+                        <div class="relative pl-8 md:pl-12">
+                            <div
+                                class="absolute -left-[9px] top-1 w-4 h-4 bg-brand-500 rounded-full ring-4 ring-white dark:ring-slate-800">
+                            </div>
+                            <span class="text-sm font-bold text-brand-600">2023</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Digital Launch</h3>
+                            <p class="text-slate-500 mt-2">Launched the AI-powered booking app and online theory course.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Meet the Team -->
+            <section class="py-20 bg-white dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-heading font-bold text-slate-900 dark:text-white">Meet the Instructors
+                        </h2>
+                        <p class="text-slate-500">Expert, patient, and highly qualified professionals.</p>
+                    </div>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="group text-center">
+                            <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5]">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=500"
+                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                                    alt="Instructor">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Robert Fox</h3>
+                            <p class="text-sm text-brand-600 font-medium">Senior Instructor</p>
+                        </div>
+                        <div class="group text-center">
+                            <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5]">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=500"
+                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                                    alt="Instructor">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Sarah Smith</h3>
+                            <p class="text-sm text-brand-600 font-medium">Defensive Specialist</p>
+                        </div>
+                        <div class="group text-center">
+                            <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5]">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=500"
+                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                                    alt="Instructor">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">James Doe</h3>
+                            <p class="text-sm text-brand-600 font-medium">Road Test Expert</p>
+                        </div>
+                        <div class="group text-center">
+                            <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5]">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=500"
+                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                                    alt="Instructor">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Maria Garcia</h3>
+                            <p class="text-sm text-brand-600 font-medium">Teen Ed Coach</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Column 1: Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer group">
+                        <div
+                            class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform">
+                            <i data-lucide="car" class="w-6 h-6"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span
+                                class="font-heading font-bold text-xl tracking-tight leading-none text-slate-900 dark:text-white">DriveMaster</span>
+                            <span
+                                class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Professional
+                                School</span>
+                        </div>
+                    </a>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">The most trusted platform for
+                        booking driving lessons. Safe, reliable, and professional.</p>
+                </div>
+
+                <!-- Column 2: Company -->
+                <div>
+                    <h4 class="font-bold mb-6 dark:text-white">Company</h4>
+                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="about.html" class="hover:text-brand-600 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-600 transition-colors">Careers</a></li>
+                        <li><a href="index.html" class="hover:text-brand-600 transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Support -->
+                <div>
+                    <h4 class="font-bold mb-6 dark:text-white">Support</h4>
+                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="contact.html" class="hover:text-brand-600 transition-colors">Help Center</a></li>
+                        <li><a href="services.html" class="hover:text-brand-600 transition-colors">Terms of Service</a>
+                        </li>
+                        <li><a href="#" class="hover:text-brand-600 transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Newsletter -->
+                <div>
+                    <h4 class="font-bold mb-6 dark:text-white">Newsletter</h4>
+                    <div class="flex flex-col gap-3">
+                        <input type="email" placeholder="Enter your email"
+                            class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-brand-500 transition-colors">
+                        <button
+                            class="bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-brand-700 transition-colors">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div
+                class="border-t border-slate-100 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+                <p>&copy; 2026 DriveMaster Inc. All rights reserved and developed by <a href="https://magtan.com"
+                        target="_blank" class="hover:text-brand-600">Sivanika</a>.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-brand-600"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-brand-600"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-brand-600"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        function initIcons() { lucide.createIcons(); }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            const mIcon = document.getElementById('mobile-theme-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+                if (icon) icon.setAttribute('data-lucide', 'moon');
+                if (mIcon) mIcon.setAttribute('data-lucide', 'moon');
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+                if (icon) icon.setAttribute('data-lucide', 'sun');
+                if (mIcon) mIcon.setAttribute('data-lucide', 'sun');
+            }
+            initIcons();
+        }
+
+        function toggleRTL() {
+            const body = document.body;
+            const html = document.documentElement;
+            if (body.classList.contains('ltr')) {
+                body.classList.remove('ltr');
+                body.classList.add('rtl');
+                html.setAttribute('dir', 'rtl');
+            } else {
+                body.classList.remove('rtl');
+                body.classList.add('ltr');
+                html.setAttribute('dir', 'ltr');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                const icon = document.getElementById('theme-icon');
+                const mIcon = document.getElementById('mobile-theme-icon');
+                if (icon) icon.setAttribute('data-lucide', 'sun');
+                if (mIcon) mIcon.setAttribute('data-lucide', 'sun');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            initIcons();
+        });
+    </script>
+</body>
+
+</html>

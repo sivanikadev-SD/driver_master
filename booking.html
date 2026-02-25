@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Lesson | DriveMaster</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d9488' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2'/><circle cx='7' cy='17' r='2'/><path d='M9 17h6'/><circle cx='17' cy='17' r='2'/></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 900: '#134e4a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Styles */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        body.ltr {
+            direction: ltr;
+            text-align: left;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-indicator-line {
+            transition: width 0.4s ease-in-out;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300 font-sans ltr">
+
+    <!-- NAVIGATION -->
+    <nav
+        class="fixed w-full z-50 transition-all duration-300 glass-panel border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
+                    <div
+                        class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform">
+                        <i data-lucide="car" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-xl tracking-tight leading-none">DriveMaster</span>
+                        <span class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Professional
+                            School</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-1 xl:gap-2">
+                    <div class="relative group px-2 py-2">
+                        <button
+                            class="flex items-center gap-1 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+                            Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </button>
+                        <div
+                            class="absolute left-0 top-full mt-2 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 p-1">
+                            <a href="index.html"
+                                class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">Classic
+                                Style</a>
+                            <a href="home2.html"
+                                class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">Modern
+                                SaaS</a>
+                        </div>
+                    </div>
+                    <a href="about.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">About</a>
+                    <a href="services.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Services</a>
+                    <a href="gallery.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Gallery</a>
+                    <a href="contact.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Contact</a>
+                    <a href="admin.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Admin</a>  
+                        <div class="h-4 w-px bg-slate-300 dark:bg-slate-700 mx-1 xl:mx-2"></div>
+                    <a href="booking.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-bold text-brand-600 transition-colors border border-brand-200 rounded-lg bg-brand-50 dark:bg-brand-900/20 dark:border-brand-800">Book
+                        Test</a>
+                </div>
+
+                <!-- Controls -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button onclick="toggleRTL()" class="p-2 text-slate-500 hover:text-brand-600 transition-colors"><i
+                            data-lucide="languages" class="w-5 h-5"></i></button>
+                    <button onclick="toggleDarkMode()"
+                        class="p-2 text-slate-500 hover:text-brand-600 transition-colors"><i id="theme-icon"
+                            data-lucide="moon" class="w-5 h-5"></i></button>
+                    <a href="dashboard.html" class="p-2 text-slate-500 hover:text-brand-600 transition-colors"
+                        title="My Dashboard">
+                        <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                    </a>
+                    <div class="h-6 w-px bg-slate-300 dark:bg-slate-700"></div>
+                    <a href="login.html"
+                        class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">Login</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-4">
+                    <button onclick="toggleMobileMenu()" class="p-2 text-slate-600 dark:text-slate-200"><i
+                            data-lucide="menu" class="w-6 h-6"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-white dark:bg-slate-900 z-50 hidden flex-col p-6 space-y-6">
+            <div class="flex justify-between items-center mb-4">
+                <span class="font-heading font-bold text-xl">Menu</span>
+                <button onclick="toggleMobileMenu()"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <a href="index.html" class="text-lg font-medium border-b pb-2">Home</a>
+            <a href="about.html" class="text-lg font-medium border-b pb-2">About Us</a>
+            <a href="services.html" class="text-lg font-medium border-b pb-2">Services</a>
+            <a href="gallery.html" class="text-lg font-medium border-b pb-2">Gallery</a>
+            <a href="contact.html" class="text-lg font-medium border-b pb-2">Contact</a>
+            <a href="booking.html" class="text-lg font-bold border-b pb-2 text-brand-600">Book Now</a>
+            <a href="dashboard.html" class="text-lg font-medium border-b pb-2 text-brand-600">My Dashboard</a>
+            <a href="login.html" class="text-lg font-medium border-b pb-2">Login</a>
+
+            <div class="flex items-center gap-4 mt-auto">
+                <button onclick="toggleRTL()"
+                    class="p-3 border rounded-xl text-slate-500 hover:text-brand-600 flex-1 flex justify-center"><i
+                        data-lucide="languages" class="w-6 h-6"></i></button>
+                <button onclick="toggleDarkMode()"
+                    class="p-3 border rounded-xl text-slate-500 hover:text-brand-600 flex-1 flex justify-center"><i
+                        data-lucide="moon" class="w-6 h-6"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-heading font-bold text-slate-900 dark:text-white mb-4">Book Your
+                    Lesson</h1>
+                <p class="text-slate-500 dark:text-slate-400 max-w-lg mx-auto">Start your journey to becoming a
+                    confident, safe driver today. Complete the steps below to secure your slot.</p>
+            </div>
+
+            <!-- Step Indicator -->
+            <div class="relative mb-12 px-4">
+                <div class="absolute top-5 left-10 right-10 h-0.5 bg-slate-200 dark:bg-slate-800">
+                    <div id="progress-line" class="step-indicator-line h-full bg-brand-600" style="width: 0%"></div>
+                </div>
+                <div class="relative flex justify-between">
+                    <div class="step-badge flex flex-col items-center gap-2 group" data-step="1">
+                        <div
+                            class="w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all border-2 border-brand-600 bg-brand-600 text-white shadow-lg shadow-brand-500/30">
+                            1</div>
+                        <span class="text-xs font-bold text-brand-600">Course</span>
+                    </div>
+                    <div class="step-badge flex flex-col items-center gap-2 group" data-step="2">
+                        <div
+                            class="w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-400">
+                            2</div>
+                        <span class="text-xs font-bold text-slate-400">Instructor</span>
+                    </div>
+                    <div class="step-badge flex flex-col items-center gap-2 group" data-step="3">
+                        <div
+                            class="w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-400">
+                            3</div>
+                        <span class="text-xs font-bold text-slate-400">Schedule</span>
+                    </div>
+                    <div class="step-badge flex flex-col items-center gap-2 group" data-step="4">
+                        <div
+                            class="w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-400">
+                            4</div>
+                        <span class="text-xs font-bold text-slate-400">Confirm</span>
+                    </div>
+                </div>
+            </div>
+
+            <form id="booking-form"
+                class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-10 shadow-xl border border-slate-100 dark:border-slate-800 overflow-hidden relative">
+
+                <!-- Step 1: Course Selection -->
+                <div class="step-content active" id="step-1">
+                    <h3 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Choose Your Program</h3>
+                    <div class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div
+                                class="course-card group relative p-6 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 cursor-pointer transition-all bg-slate-50/50 dark:bg-slate-800/30">
+                                <input type="radio" name="course" value="beginner"
+                                    class="absolute inset-0 opacity-0 cursor-pointer" required>
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div
+                                        class="w-12 h-12 bg-brand-100 dark:bg-brand-900/30 rounded-xl flex items-center justify-center text-brand-600">
+                                        <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                                    </div>
+                                    <h4 class="font-bold text-lg dark:text-white">Beginner</h4>
+                                </div>
+                                <p class="text-sm text-slate-500 mb-4">10 full lessons, theory prep, and mock test.</p>
+                                <span class="text-xl font-bold text-brand-600">₹5,000</span>
+                            </div>
+                            <div
+                                class="course-card group relative p-6 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 cursor-pointer transition-all bg-slate-50/50 dark:bg-slate-800/30">
+                                <input type="radio" name="course" value="refresher"
+                                    class="absolute inset-0 opacity-0 cursor-pointer">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div
+                                        class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600">
+                                        <i data-lucide="refresh-ccw" class="w-6 h-6"></i>
+                                    </div>
+                                    <h4 class="font-bold text-lg dark:text-white">Refresher</h4>
+                                </div>
+                                <p class="text-sm text-slate-500 mb-4">5 lessons to brush up your skills.</p>
+                                <span class="text-xl font-bold text-brand-600">₹2,500</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold mb-3 text-slate-700 dark:text-slate-300">Transmission
+                                Preference</label>
+                            <div class="flex gap-4">
+                                <label class="flex-1">
+                                    <input type="radio" name="transmission" value="auto" checked class="sr-only peer">
+                                    <div
+                                        class="p-4 text-center rounded-xl border-2 border-slate-100 dark:border-slate-800 peer-checked:border-brand-500 peer-checked:bg-brand-50/50 dark:peer-checked:bg-brand-900/10 cursor-pointer transition-all font-semibold">
+                                        Automatic
+                                    </div>
+                                </label>
+                                <label class="flex-1">
+                                    <input type="radio" name="transmission" value="manual" class="sr-only peer">
+                                    <div
+                                        class="p-4 text-center rounded-xl border-2 border-slate-100 dark:border-slate-800 peer-checked:border-brand-500 peer-checked:bg-brand-50/50 dark:peer-checked:bg-brand-900/10 cursor-pointer transition-all font-semibold">
+                                        Manual
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Instructor -->
+                <div class="step-content" id="step-2">
+                    <h3 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Select Instructor</h3>
+                    <div class="space-y-4">
+                        <label
+                            class="block relative group px-6 py-4 rounded-2xl border-2 border-brand-500 bg-brand-50/50 dark:bg-brand-900/10 cursor-pointer transition-all">
+                            <input type="radio" name="instructor" value="any" checked class="sr-only">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center text-brand-600 shadow-sm">
+                                    <i data-lucide="users" class="w-6 h-6"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold dark:text-white">Any Available</h4>
+                                    <p class="text-xs text-slate-500">Fastest booking option</p>
+                                </div>
+                                <i data-lucide="check-circle-2" class="text-brand-600 w-6 h-6"></i>
+                            </div>
+                        </label>
+
+                        <label
+                            class="block relative group px-6 py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-brand-500 cursor-pointer transition-all">
+                            <input type="radio" name="instructor" value="robert" class="sr-only">
+                            <div class="flex items-center gap-4">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100"
+                                    class="w-12 h-12 rounded-full object-cover">
+                                <div class="flex-1">
+                                    <h4 class="font-bold dark:text-white">Robert Fox</h4>
+                                    <p class="text-xs text-slate-500">Senior Instructor • 5.0 ★</p>
+                                </div>
+                                <i data-lucide="check-circle-2"
+                                    class="text-brand-600 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                        </label>
+
+                        <label
+                            class="block relative group px-6 py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-brand-500 cursor-pointer transition-all">
+                            <input type="radio" name="instructor" value="sarah" class="sr-only">
+                            <div class="flex items-center gap-4">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100"
+                                    class="w-12 h-12 rounded-full object-cover">
+                                <div class="flex-1">
+                                    <h4 class="font-bold dark:text-white">Sarah Smith</h4>
+                                    <p class="text-xs text-slate-500">Defensive Specialist • 4.9 ★</p>
+                                </div>
+                                <i data-lucide="check-circle-2"
+                                    class="text-brand-600 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 3: Date & Time -->
+                <div class="step-content" id="step-3">
+                    <h3 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Choose Your Slot</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold mb-2 text-slate-700 dark:text-slate-300">Preferred
+                                Date</label>
+                            <input type="date"
+                                class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-xl outline-none focus:border-brand-500 transition-colors"
+                                required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-4 text-slate-700 dark:text-slate-300">Available
+                                Times</label>
+                            <div id="slot-container" class="grid grid-cols-3 gap-3">
+                                <button type="button"
+                                    class="slot-btn py-3 border-2 border-slate-100 dark:border-slate-800 rounded-xl text-sm font-semibold hover:border-brand-500 transition-all dark:bg-slate-800/50">09:00
+                                    AM</button>
+                                <button type="button"
+                                    class="slot-btn py-3 border-2 border-slate-100 dark:border-slate-800 rounded-xl text-sm font-semibold hover:border-brand-500 transition-all dark:bg-slate-800/50">10:30
+                                    AM</button>
+                                <button type="button"
+                                    class="slot-btn py-3 border-2 border-slate-100 dark:border-slate-800 rounded-xl text-sm font-semibold hover:border-brand-500 transition-all dark:bg-slate-800/50">01:00
+                                    PM</button>
+                                <button type="button"
+                                    class="slot-btn py-3 border-2 border-slate-100 dark:border-slate-800 rounded-xl text-sm font-semibold hover:border-brand-500 transition-all dark:bg-slate-800/50">02:30
+                                    PM</button>
+                                <button type="button"
+                                    class="slot-btn py-3 border-2 border-slate-100 dark:border-slate-800 rounded-xl text-sm font-semibold hover:border-brand-500 transition-all dark:bg-slate-800/50">04:00
+                                    PM</button>
+                            </div>
+                            <input type="hidden" name="slot" id="selected-slot" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Confirmation -->
+                <div class="step-content" id="step-4">
+                    <h3 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Confirm Details</h3>
+                    <div class="space-y-6">
+                        <div
+                            class="bg-brand-50 dark:bg-brand-900/20 p-6 rounded-2xl border border-brand-100 dark:border-brand-800/30">
+                            <div class="flex items-center gap-3 mb-4 text-brand-600">
+                                <i data-lucide="info" class="w-5 h-5"></i>
+                                <span class="font-bold">Next Steps</span>
+                            </div>
+                            <p class="text-sm text-slate-600 dark:text-brand-200/70">A confirmation link will be sent to
+                                your email. You can pay securely online or at our office before your first lesson.</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Full Name</label>
+                                <input type="text" placeholder="John Doe"
+                                    class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-xl outline-none focus:border-brand-500 transition-colors"
+                                    required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Phone
+                                    Number</label>
+                                <input type="tel" placeholder="+1 (555) 000-0000"
+                                    class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-xl outline-none focus:border-brand-500 transition-colors"
+                                    required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Email Address</label>
+                            <input type="email" placeholder="john@example.com"
+                                class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-xl outline-none focus:border-brand-500 transition-colors"
+                                required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div
+                    class="flex items-center justify-between mt-10 pt-6 border-t border-slate-100 dark:border-slate-800">
+                    <button type="button" id="prev-btn"
+                        class="invisible px-8 py-3 rounded-xl font-bold text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-2">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Back
+                    </button>
+                    <button type="button" id="next-btn"
+                        class="px-8 py-3 bg-brand-600 text-white rounded-xl font-bold shadow-lg shadow-brand-500/30 hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2">
+                        Next Step <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="index.html" class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white">
+                            <i data-lucide="car" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-heading font-bold text-xl dark:text-white">DriveMaster</span>
+                    </a>
+                    <p class="text-slate-500 text-sm">Professional driving education with a focus on defense and safety.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 dark:text-white">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-slate-500">
+                        <li><a href="about.html" class="hover:text-brand-600 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-brand-600 transition-colors">Courses</a></li>
+                        <li><a href="gallery.html" class="hover:text-brand-600 transition-colors">Gallery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 dark:text-white">Support</h4>
+                    <ul class="space-y-3 text-sm text-slate-500">
+                        <li><a href="contact.html" class="hover:text-brand-600 transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-brand-600 transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 dark:text-white">Newsletter</h4>
+                    <div class="flex flex-col gap-3">
+                        <input type="email" placeholder="Email address"
+                            class="px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm outline-none">
+                        <button class="bg-brand-600 text-white py-2 rounded-lg text-sm font-bold">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="border-t border-slate-100 dark:border-slate-800 pt-8 text-center text-sm text-slate-500 dark:text-slate-400">
+                &copy; 2026 DriveMaster. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const steps = document.querySelectorAll('.step-content');
+        const badges = document.querySelectorAll('.step-badge');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const progressLine = document.getElementById('progress-line');
+        let currentStep = 0;
+
+        function updateUI() {
+            // Update steps
+            steps.forEach((step, i) => {
+                step.classList.toggle('active', i === currentStep);
+            });
+
+            // Update badges
+            badges.forEach((badge, i) => {
+                const circle = badge.querySelector('div');
+                const text = badge.querySelector('span');
+                if (i <= currentStep) {
+                    circle.classList.add('bg-brand-600', 'text-white', 'border-brand-600', 'shadow-brand-500/30');
+                    circle.classList.remove('text-slate-400', 'border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900');
+                    text.classList.add('text-brand-600');
+                    text.classList.remove('text-slate-400');
+                } else {
+                    circle.classList.remove('bg-brand-600', 'text-white', 'border-brand-600', 'shadow-brand-500/30');
+                    circle.classList.add('text-slate-400', 'border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900');
+                    text.classList.remove('text-brand-600');
+                    text.classList.add('text-slate-400');
+                }
+            });
+
+            // Update progress line
+            const progress = (currentStep / (steps.length - 1)) * 100;
+            progressLine.style.width = `${progress}%`;
+
+            // Update buttons
+            prevBtn.classList.toggle('invisible', currentStep === 0);
+            if (currentStep === steps.length - 1) {
+                nextBtn.innerHTML = `Confirm Booking <i data-lucide="check" class="w-4 h-4"></i>`;
+                nextBtn.classList.remove('bg-brand-600');
+                nextBtn.classList.add('bg-slate-900', 'dark:bg-white', 'dark:text-slate-900');
+            } else {
+                nextBtn.innerHTML = `Next Step <i data-lucide="arrow-right" class="w-4 h-4"></i>`;
+                nextBtn.classList.add('bg-brand-600');
+                nextBtn.classList.remove('bg-slate-900', 'dark:bg-white', 'dark:text-slate-900');
+            }
+            lucide.createIcons();
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const form = document.getElementById('booking-form');
+            if (currentStep < steps.length - 1) {
+                // Simple validation
+                const activeInputs = steps[currentStep].querySelectorAll('input[required], select[required]');
+                let valid = true;
+                activeInputs.forEach(input => {
+                    if (!input.value) {
+                        if (input.type === 'radio') {
+                            const name = input.getAttribute('name');
+                            if (!steps[currentStep].querySelector(`input[name="${name}"]:checked`)) valid = false;
+                        } else {
+                            valid = false;
+                        }
+                    }
+                });
+
+                if (valid) {
+                    currentStep++;
+                    updateUI();
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            } else {
+                alert('Booking Confirmed! Redirecting to dashboard...');
+                window.location.href = 'dashboard.html';
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                updateUI();
+            }
+        });
+
+        // Slot selection logic
+        document.querySelectorAll('.slot-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('border-brand-600', 'bg-brand-50', 'dark:bg-brand-900/10'));
+                btn.classList.add('border-brand-600', 'bg-brand-50', 'dark:bg-brand-900/10');
+                document.getElementById('selected-slot').value = btn.innerText;
+            });
+        });
+
+        // Course selection card logic
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.course-card').forEach(c => c.classList.remove('border-brand-500', 'bg-brand-50/50', 'dark:bg-brand-900/10'));
+                card.classList.add('border-brand-500', 'bg-brand-50/50', 'dark:bg-brand-900/10');
+                card.querySelector('input').checked = true;
+            });
+        });
+
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+            initIcons();
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function toggleRTL() {
+            const isRTL = document.documentElement.dir === 'rtl';
+            document.documentElement.dir = isRTL ? 'rtl' : 'ltr'; // simplified for toggle
+            if (document.documentElement.dir === 'rtl') {
+                document.body.classList.add('rtl');
+                document.body.classList.remove('ltr');
+            } else {
+                document.body.classList.remove('rtl');
+                document.body.classList.add('ltr');
+            }
+        }
+
+        function initIcons() {
+            lucide.createIcons();
+        }
+
+        // Initialize theme
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+        initIcons();
+    </script>
+</body>
+
+</html>

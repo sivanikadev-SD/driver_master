@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveMaster | Premium Driving School</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d9488' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2'/><circle cx='7' cy='17' r='2'/><path d='M9 17h6'/><circle cx='17' cy='17' r='2'/></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 900: '#134e4a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Styles */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        body.ltr {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Masonry Grid */
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Loader */
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #0d9488;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300 font-sans ltr">
+    <!-- sivanika -->
+
+    <!-- NAVIGATION -->
+    <nav
+        class="fixed w-full z-50 transition-all duration-300 glass-panel border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
+                    <div
+                        class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform">
+                        <i data-lucide="car" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-xl tracking-tight leading-none">DriveMaster</span>
+                        <span class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Professional
+                            School</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-1 xl:gap-2">
+                    <div class="relative group px-2 py-2">
+                        <button
+                            class="flex items-center gap-1 text-sm font-bold text-brand-600 dark:text-brand-400 transition-colors">
+                            Home <i data-lucide="chevron-down" class="w-4 h-4 text-brand-600"></i>
+                        </button>
+                        <div
+                            class="absolute left-0 top-full mt-2 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 p-1">
+                            <a href="index.html"
+                                class="block px-4 py-2.5 text-sm bg-slate-50 dark:bg-slate-800 text-brand-600 rounded-lg transition-colors">Classic
+                                Style</a>
+                            <a href="home2.html"
+                                class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">Modern
+                                SaaS</a>
+                        </div>
+                    </div>
+                    <a href="about.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">About</a>
+                    <a href="services.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Services</a>
+                    <a href="gallery.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Gallery</a>
+                    <a href="contact.html"
+                       class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Contact</a>
+                       <a href="admin.html"
+                       class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Admin</a>
+                       <div class="h-4 w-px bg-slate-300 dark:bg-slate-700 mx-1 xl:mx-2"></div>
+                    <a href="booking.html"
+                        class="px-2 xl:px-3 py-2 text-sm font-bold text-brand-600 hover:text-brand-700 transition-colors border border-brand-200 rounded-lg bg-brand-50 dark:bg-brand-900/20 dark:border-brand-800">Book
+                        Test</a>
+                </div>
+
+                <!-- Controls -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button onclick="toggleRTL()" class="p-2 text-slate-500 hover:text-brand-600 transition-colors"><i
+                            data-lucide="languages" class="w-5 h-5"></i></button>
+                    <button onclick="toggleDarkMode()"
+                        class="p-2 text-slate-500 hover:text-brand-600 transition-colors"><i id="theme-icon"
+                            data-lucide="moon" class="w-5 h-5"></i></button>
+                    <a href="dashboard.html" class="p-2 text-slate-500 hover:text-brand-600 transition-colors"
+                        title="My Dashboard">
+                        <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                    </a>
+                    <div class="h-6 w-px bg-slate-300 dark:bg-slate-700"></div>
+                    <a href="login.html"
+                        class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">Login</a>
+                    <a href="register.html"
+                        class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">Sign
+                        up
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-4">
+                    <button onclick="toggleMobileMenu()" class="p-2 text-slate-600 dark:text-slate-200"><i
+                            data-lucide="menu" class="w-6 h-6"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed bg-white dark:bg-slate-900 z-40 hidden flex-col p-6 space-y-6 lg:hidden">
+            <div class="flex justify-between items-center mb-4">
+                <span class="font-heading font-bold text-xl">Menu</span>
+                <button onclick="toggleMobileMenu()"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <a href="index.html" class="text-lg font-bold border-b pb-2 text-brand-600">Home</a>
+            <a href="home2.html" class="text-lg font-medium border-b pb-2">Modern Home</a>
+            <a href="about.html" class="text-lg font-medium border-b pb-2">About Us</a>
+            <a href="services.html" class="text-lg font-medium border-b pb-2">Services</a>
+            <a href="gallery.html" class="text-lg font-medium border-b pb-2">Gallery</a>
+            <a href="contact.html" class="text-lg font-medium border-b pb-2">Contact</a>
+            <a href="login.html" class="text-lg font-medium border-b pb-2">Login</a>
+            <a href="register.html" class="text-lg font-medium border-b pb-2">Register</a>
+            <a href="dashboard.html" class="text-lg font-medium border-b pb-2 text-brand-600">My
+                Dashboard</a>
+            <a href="admin.html" class="text-lg font-medium border-b pb-2 text-brand-600">Admin</a>
+            <!-- Mobile Controls -->
+            <div class="flex items-center gap-4 mt-4">
+                <button onclick="toggleRTL()"
+                    class="p-2 border rounded-lg text-slate-500 hover:text-brand-600 flex items-center gap-2 w-full justify-center">
+                    <i data-lucide="languages" class="w-5 h-5"></i> <span>RTL/LTR</span>
+                </button>
+                <button onclick="toggleDarkMode()"
+                    class="p-2 border rounded-lg text-slate-500 hover:text-brand-600 flex items-center gap-2 w-full justify-center">
+                    <i id="mobile-theme-icon" data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
+                </button>
+            </div>
+
+            <button onclick="navigateTo('booking')"
+                class="w-full bg-brand-600 text-white py-4 rounded-xl font-bold mt-2">Start Learning</button>
+        </div>
+    </nav>
+    <!-- siv@nik@ -->
+
+    <main id="app" class="pt-20 min-h-screen">
+
+        <!-- VIEW: HOME (Classic) -->
+        <div id="view-home" class="page-view">
+            <!-- 1. Hero Section -->
+            <section class="relative pt-20 pb-32 overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 -z-10 w-[500px] h-[500px] bg-brand-200/40 dark:bg-brand-900/20 rounded-full blur-3xl opacity-50 translate-x-1/3 -translate-y-1/4">
+                </div>
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 text-sm font-semibold mb-8 border border-brand-100 dark:border-brand-800">
+                        <span class="relative flex h-2 w-2"><span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span><span
+                                class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span></span>
+                        New Defensive Driving Course Available
+                    </div>
+                    <h1
+                        class="text-5xl md:text-7xl font-heading font-extrabold tracking-tight mb-8 text-slate-900 dark:text-white">
+                        Drive with <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-blue-600">Confidence.</span><br>
+                        Arrive Safely.
+                    </h1>
+                    <p class="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                        Premium driving lessons tailored to your pace. Certified instructors, modern vehicles, and a
+                        proven curriculum to get you on the road.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-5">
+                        <button onclick="navigateTo('booking')"
+                            class="px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-full font-bold text-lg shadow-xl shadow-brand-500/20 transition-all hover:scale-105">Book
+                            Your First Lesson</button>
+                        <button onclick="navigateTo('services')"
+                            class="px-8 py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-white border border-slate-200 dark:border-slate-700 rounded-full font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all shadow-sm">Explore
+                            Courses</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1.5 Short Intro -->
+            <section class="py-12 md:py-16 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
+                <div class="max-w-4xl mx-auto px-4 text-center">
+                    <span class="text-brand-600 font-bold tracking-wider uppercase text-sm">About Us</span>
+                    <h2 class="text-3xl font-heading font-bold mt-2 mb-6 text-slate-900 dark:text-white">Driving
+                        Consistently Since 2010</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                        DriveMaster is the region's premier driving school, dedicated to building safe, confident
+                        drivers.
+                        With a 98% pass rate and over 15,000 graduates, our modern approach combines technology with
+                        expert instruction.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 1.6 Key Features -->
+            <section class="py-12 md:py-16 bg-slate-50 dark:bg-slate-950">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div
+                            class="flex flex-col items-center text-center p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow">
+                            <div
+                                class="w-14 h-14 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-4">
+                                <i data-lucide="monitor-play" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Online Theory</h3>
+                            <p class="text-slate-500 text-sm">Learn the rules of the road from home with our engaging
+                                video modules.</p>
+                        </div>
+                        <div
+                            class="flex flex-col items-center text-center p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow">
+                            <div
+                                class="w-14 h-14 bg-green-50 text-green-600 rounded-full flex items-center justify-center mb-4">
+                                <i data-lucide="map-pin" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Door-to-Door</h3>
+                            <p class="text-slate-500 text-sm">Free pickup and drop-off from your home, school, or
+                                office.</p>
+                        </div>
+                        <div
+                            class="flex flex-col items-center text-center p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow">
+                            <div
+                                class="w-14 h-14 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mb-4">
+                                <i data-lucide="clock" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Flexible Hours</h3>
+                            <p class="text-slate-500 text-sm">We drive when you're free. Weekends and evenings
+                                available.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Stats & Social Proof -->
+            <section class="py-12 md:py-16 bg-white dark:bg-slate-900 border-y border-slate-100 dark:border-slate-800">
+                <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="p-4">
+                        <div class="text-4xl font-bold text-slate-900 dark:text-white font-heading">15k+</div>
+                        <div class="text-sm text-slate-500 font-medium tracking-wide uppercase">Graduates</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-4xl font-bold text-slate-900 dark:text-white font-heading">98%</div>
+                        <div class="text-sm text-slate-500 font-medium tracking-wide uppercase">Pass Rate</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-4xl font-bold text-slate-900 dark:text-white font-heading">50+</div>
+                        <div class="text-sm text-slate-500 font-medium tracking-wide uppercase">Instructors</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-4xl font-bold text-slate-900 dark:text-white font-heading">4.9/5</div>
+                        <div class="text-sm text-slate-500 font-medium tracking-wide uppercase">Rating</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Features Grid -->
+            <section class="py-12 md:py-16 lg:py-20 bg-slate-50 dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-heading font-bold mb-4">Why Choose DriveMaster?</h2>
+                        <p class="text-slate-500">Everything you need to pass your driving test on the first try.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div
+                            class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border hover:shadow-lg transition-all">
+                            <i data-lucide="calendar-check" class="w-10 h-10 text-brand-600 mb-4"></i>
+                            <h3 class="text-xl font-bold mb-3">Easy Scheduling</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Real-time availability calendar allows you to
+                                book lessons 24/7 without phone calls.</p>
+                        </div>
+                        <div
+                            class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border hover:shadow-lg transition-all">
+                            <i data-lucide="shield-check" class="w-10 h-10 text-brand-600 mb-4"></i>
+                            <h3 class="text-xl font-bold mb-3">Certified Instructors</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Learn from patient, background-checked, and
+                                highly certified professionals.</p>
+                        </div>
+                        <div
+                            class="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border hover:shadow-lg transition-all">
+                            <i data-lucide="trophy" class="w-10 h-10 text-brand-600 mb-4"></i>
+                            <h3 class="text-xl font-bold mb-3">Test Guarantee</h3>
+                            <p class="text-slate-600 dark:text-slate-400">If you don't pass, we pay for your re-test
+                                (Terms apply).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Featured Instructors (New) -->
+            <section class="py-12 md:py-16 lg:py-20 bg-white dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="flex justify-between items-end mb-10">
+                        <div>
+                            <h2 class="text-3xl font-heading font-bold mb-2">Meet Our Top Instructors</h2>
+                            <p class="text-slate-500">Patient, professional, and highly rated.</p>
+                        </div>
+                        <button onclick="navigateTo('about')"
+                            class="text-brand-600 font-semibold hover:underline hidden md:block">View All Team
+                            &rarr;</button>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- Instructor 1 -->
+                        <div
+                            class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 hover:border-brand-300 transition-colors">
+                            <div class="flex items-center gap-4 mb-4">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200"
+                                    class="w-16 h-16 rounded-full object-cover" alt="Instructor">
+                                <div>
+                                    <h4 class="font-bold text-lg">Robert Fox</h4>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-500 mb-4">Specializes in nervous first-timers and highway
+                                driving.</p>
+                            <button onclick="navigateTo('booking')"
+                                class="w-full py-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg text-sm font-semibold hover:bg-brand-50 transition-colors">Book
+                                with Robert</button>
+                        </div>
+                        <!-- Instructor 2 -->
+                        <div
+                            class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 hover:border-brand-300 transition-colors">
+                            <div class="flex items-center gap-4 mb-4">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200"
+                                    class="w-16 h-16 rounded-full object-cover" alt="Instructor">
+                                <div>
+                                    <h4 class="font-bold text-lg">Sarah Smith</h4>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-500 mb-4">Expert in defensive driving and parallel parking
+                                techniques.</p>
+                            <button onclick="navigateTo('booking')"
+                                class="w-full py-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg text-sm font-semibold hover:bg-brand-50 transition-colors">Book
+                                with Sarah</button>
+                        </div>
+                        <!-- Instructor 3 -->
+                        <div
+                            class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 hover:border-brand-300 transition-colors">
+                            <div class="flex items-center gap-4 mb-4">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
+                                    class="w-16 h-16 rounded-full object-cover" alt="Instructor">
+                                <div>
+                                    <h4 class="font-bold text-lg">James Doe</h4>
+                                    <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-500 mb-4">Road test specialist with a 99% success rate for
+                                students.</p>
+                            <button onclick="navigateTo('booking')"
+                                class="w-full py-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg text-sm font-semibold hover:bg-brand-50 transition-colors">Book
+                                with James</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Mobile App Download (New) -->
+            <section class="py-12 md:py-16 lg:py-20 bg-brand-900 text-white">
+                <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-12">
+                    <div class="md:w-1/2">
+                        <h2 class="text-3xl font-heading font-bold mb-6">Manage Lessons on the Go</h2>
+                        <p class="text-brand-100 text-lg mb-8">Download the DriveMaster app. Track your progress,
+                            reschedule lessons, and chat with instructors instantly.</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button
+                                class="bg-white text-slate-900 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-slate-200 transition-colors">
+                                <i data-lucide="smartphone" class="w-6 h-6"></i> App Store
+                            </button>
+                            <button
+                                class="bg-white text-slate-900 px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-slate-200 transition-colors">
+                                <i data-lucide="play" class="w-6 h-6"></i> Google Play
+                            </button>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <img src="assets/image/apps.jpg"
+                            class="rounded-[2.5rem] shadow-2xl border-8 border-slate-900 dark:border-slate-800 w-64 md:w-80 transform rotate-3 hover:rotate-0 transition-transform duration-500"
+                            alt="Mobile App Interface">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VIEW: HOME 2 (Modern SaaS) -->
+        <div id="view-home2" class="page-view hidden">
+            <!-- 1. Split Hero -->
+            <section
+                class="relative min-h-[90vh] flex items-center bg-slate-50 dark:bg-slate-900 overflow-hidden pt-24 md:pt-0">
+                <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center w-full">
+                    <div class="space-y-8">
+                        <h1 class="text-6xl font-heading font-bold tracking-tight text-slate-900 dark:text-white">
+                            The Future of <br><span class="text-brand-600">Driver Education.</span>
+                        </h1>
+                        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                            AI-driven scheduling, progress tracking, and interactive theory modules. Join the next
+                            generation of safe drivers.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="navigateTo('booking')"
+                                class="px-8 py-4 bg-slate-900 dark:text-white text-white rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all">Get
+                                Started</button>
+                            <button
+                                class="px-8 py-4 flex items-center justify-center gap-2 text-slate-700 dark:text-slate-300 font-semibold hover:bg-white dark:hover:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 transition-all">View
+                                Demo</button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-r from-brand-400 to-blue-400 rounded-[2.5rem] blur-2xl opacity-30 animate-pulse">
+                        </div>
+                        <div
+                            class="relative bg-white dark:bg-slate-800 rounded-[2rem] p-2 shadow-2xl border border-slate-200 dark:border-slate-700">
+                            <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=1200"
+                                class="rounded-[1.8rem] w-full h-auto" alt="App Preview">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Comparison Table -->
+            <section class="py-16 bg-white dark:bg-slate-800">
+                <div class="max-w-5xl mx-auto px-4 text-center">
+                    <h2 class="text-3xl font-heading font-bold mb-12">Why We Are Better</h2>
+                    <div
+                        class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 text-left">
+                        <table class="w-full text-sm md:text-base">
+                            <thead>
+                                <tr class="border-b border-slate-200 dark:border-slate-700">
+                                    <th class="pb-4 pl-4 font-bold text-slate-400">Feature</th>
+                                    <th class="pb-4 text-center font-bold text-brand-600">DriveMaster</th>
+                                    <th class="pb-4 pr-4 text-center font-bold text-slate-500">Others</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                <tr>
+                                    <td class="py-4 pl-4">Guaranteed Pass Rate</td>
+                                    <td class="py-4 text-center"><span
+                                            class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">YES</span>
+                                    </td>
+                                    <td class="py-4 pr-4 text-center text-slate-500">No</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 pl-4">Dual-Control Vehicles</td>
+                                    <td class="py-4 text-center"><span
+                                            class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">YES</span>
+                                    </td>
+                                    <td class="py-4 pr-4 text-center text-slate-500">Sometimes</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 pl-4">Online Scheduling</td>
+                                    <td class="py-4 text-center"><span
+                                            class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">24/7
+                                            AI</span></td>
+                                    <td class="py-4 pr-4 text-center text-slate-500">Phone Only</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 pl-4">Pickup Service</td>
+                                    <td class="py-4 text-center"><span
+                                            class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">FREE</span>
+                                    </td>
+                                    <td class="py-4 pr-4 text-center text-slate-500">Extra Fee</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Features Bento Grid -->
+            <section class="py-16 bg-slate-50 dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <span class="text-brand-600 font-bold tracking-wider text-sm">FEATURES</span>
+                        <h2 class="text-4xl font-heading font-bold mt-2">Everything you need to drive</h2>
+                    </div>
+                    <div class="grid md:grid-cols-3 grid-rows-2 gap-6 h-auto md:h-[600px]">
+                        <div
+                            class="md:col-span-2 md:row-span-2 bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-lg border dark:border-slate-700 flex flex-col justify-between relative overflow-hidden group">
+                            <div class="relative z-10">
+                                <h3 class="text-2xl font-bold mb-2">Real-time Instructor Tracking</h3>
+                                <p class="text-slate-500 max-w-md">See exactly when your instructor is arriving for
+                                    pickup. Live GPS tracking integrated into your student app.</p>
+                            </div>
+                            <div class="mt-8">
+                                <button
+                                    class="text-brand-600 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Try
+                                    Tracking <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+                            </div>
+                            <div
+                                class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-600 rounded-full opacity-10 group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                        </div>
+                        <div class="bg-brand-600 text-white rounded-3xl p-8 flex flex-col justify-center">
+                            <i data-lucide="video" class="w-10 h-10 mb-4 opacity-80"></i>
+                            <h3 class="text-xl font-bold mb-2">Theory Video Library</h3>
+                            <p class="text-brand-100 text-sm">Access 50+ HD videos covering signs, rules, and hazards.
+                            </p>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-slate-800 rounded-3xl p-8 flex flex-col justify-center border dark:border-slate-700">
+                            <i data-lucide="message-circle" class="w-10 h-10 mb-4 text-orange-500"></i>
+                            <h3 class="text-xl font-bold mb-2">Chat Support</h3>
+                            <p class="text-slate-500 text-sm">24/7 Support team ready to answer your questions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Partners / Integrations -->
+            <section class="py-12 bg-white dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                    <h2 class="text-2xl font-bold mb-12 text-slate-900 dark:text-white">Trusted Partners</h2>
+                    <div
+                        class="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                        <div class="flex items-center gap-2 text-2xl font-bold text-slate-800 dark:text-white"><i
+                                data-lucide="shield" class="w-8 h-8"></i> SafeDrive Ins</div>
+                        <div class="flex items-center gap-2 text-2xl font-bold text-slate-800 dark:text-white"><i
+                                data-lucide="file-check" class="w-8 h-8"></i> DMV Connect</div>
+                        <div class="flex items-center gap-2 text-2xl font-bold text-slate-800 dark:text-white"><i
+                                data-lucide="car" class="w-8 h-8"></i> Toyota Safety</div>
+                        <div class="flex items-center gap-2 text-2xl font-bold text-slate-800 dark:text-white"><i
+                                data-lucide="map" class="w-8 h-8"></i> TomTom</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Testimonials Strip -->
+            <section class="py-24 bg-slate-900 text-white">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                    <h2 class="text-3xl font-heading font-bold mb-12">What Students Say</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-slate-800 p-8 rounded-2xl">
+                            <div class="flex justify-center text-yellow-400 mb-4">★★★★★</div>
+                            <p class="text-slate-300 italic mb-6">"The AI scheduling was a game changer. I could book
+                                lessons around my college classes without calling anyone."</p>
+                            <h4 class="font-bold">Emily R.</h4>
+                        </div>
+                        <div class="bg-slate-800 p-8 rounded-2xl">
+                            <div class="flex justify-center text-yellow-400 mb-4">★★★★★</div>
+                            <p class="text-slate-300 italic mb-6">"Passed my test on the first try thanks to the
+                                detailed video theory lessons and mock tests."</p>
+                            <h4 class="font-bold">Michael T.</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VIEW: ABOUT US -->
+        <div id="view-about" class="page-view hidden">
+            <!-- 1. Hero Header (Banner) -->
+            <div class="bg-slate-900 py-20 text-center text-white relative overflow-hidden">
+                <div
+                    class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+                </div>
+                <div class="max-w-4xl mx-auto px-4 relative z-10">
+                    <h1 class="text-5xl font-heading font-bold mb-6">About Us</h1>
+                    <p class="text-slate-300 text-lg">Building Safer Drivers Since 2010. Our mission is to make the
+                        roads safer, one driver at a time.</p>
+                </div>
+            </div>
+
+            <!-- 2. Core Values (New) -->
+            <section class="py-20 bg-slate-50 dark:bg-slate-800">
+                <div class="max-w-7xl mx-auto px-4">
+                    <h2 class="text-3xl font-heading font-bold mb-12 text-center text-slate-900 dark:text-white">Our
+                        Core Values</h2>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 bg-brand-100 dark:bg-brand-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-brand-600">
+                                <i data-lucide="heart" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Patience</h4>
+                            <p class="text-sm text-slate-500">We understand everyone learns at their own speed.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600">
+                                <i data-lucide="shield" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Safety</h4>
+                            <p class="text-sm text-slate-500">Defensive driving is the foundation of every lesson.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-purple-600">
+                                <i data-lucide="zap" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Innovation</h4>
+                            <p class="text-sm text-slate-500">Using tech to enhance the learning experience.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-orange-600">
+                                <i data-lucide="award" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Excellence</h4>
+                            <p class="text-sm text-slate-500">98% pass rate because we don't settle for less.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Our Story (Split Layout) -->
+            <section class="py-20 bg-white dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+                    <div class="relative">
+                        <div
+                            class="absolute -top-4 -left-4 w-24 h-24 bg-brand-100 dark:bg-brand-900/30 rounded-full blur-2xl">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800"
+                            class="rounded-3xl shadow-2xl relative z-10" alt="Instructor and student">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-heading font-bold mb-6 text-slate-900 dark:text-white">Our Mission &
+                            Story</h2>
+                        <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                            We believe driving is a life skill, not just a test to pass. Over the last decade, we've
+                            evolved from a small local school to a premier institution leveraging technology to enhance
+                            the learning experience.
+                        </p>
+                        <ul class="space-y-4 mt-8">
+                            <li class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm text-brand-600">
+                                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">Safety First</h4>
+                                    <p class="text-sm text-slate-500">Dual-control cars and certified defensive driving
+                                        techniques.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 bg-white dark:bg-slate-700 rounded-xl flex items-center justify-center shadow-sm text-brand-600">
+                                    <i data-lucide="users" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">Community Focused</h4>
+                                    <p class="text-sm text-slate-500">Scholarships for underprivileged youth.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Timeline / History (New) -->
+            <section class="py-20 bg-slate-50 dark:bg-slate-800">
+                <div class="max-w-4xl mx-auto px-4">
+                    <h2 class="text-3xl font-heading font-bold mb-12 text-center text-slate-900 dark:text-white">Our
+                        Journey</h2>
+                    <div class="relative border-l-2 border-brand-200 dark:border-brand-900 ml-4 md:ml-6 space-y-12">
+                        <div class="relative pl-8 md:pl-12">
+                            <div
+                                class="absolute -left-[9px] top-1 w-4 h-4 bg-brand-500 rounded-full ring-4 ring-white dark:ring-slate-800">
+                            </div>
+                            <span class="text-sm font-bold text-brand-600">2010</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Founded</h3>
+                            <p class="text-slate-500 mt-2">Started with 1 car and 2 instructors in a small garage.</p>
+                        </div>
+                        <div class="relative pl-8 md:pl-12">
+                            <div
+                                class="absolute -left-[9px] top-1 w-4 h-4 bg-brand-500 rounded-full ring-4 ring-white dark:ring-slate-800">
+                            </div>
+                            <span class="text-sm font-bold text-brand-600">2015</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Expansion</h3>
+                            <p class="text-slate-500 mt-2">Expanded to 3 locations and introduced the "Teen Safety"
+                                program.</p>
+                        </div>
+                        <div class="relative pl-8 md:pl-12">
+                            <div
+                                class="absolute -left-[9px] top-1 w-4 h-4 bg-brand-500 rounded-full ring-4 ring-white dark:ring-slate-800">
+                            </div>
+                            <span class="text-sm font-bold text-brand-600">2023</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Digital Launch</h3>
+                            <p class="text-slate-500 mt-2">Launched the AI-powered booking app and online theory course.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Meet the Team -->
+            <section class="py-20 bg-white dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-heading font-bold text-slate-900 dark:text-white">Meet the Instructors
+                        </h2>
+                        <p class="text-slate-500">Expert, patient, and highly qualified professionals.</p>
+                    </div>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <!-- Instructor Cards repeated from Home but styled differently -->
+                        <div class="group text-center">
+                            <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5]">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=500"
+                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                                    alt="Instructor">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Robert Fox</h3>
+                            <p class="text-sm text-brand-600 font-medium">Senior Instructor</p>
+                        </div>
+                        <div class="group text-center">
+                            <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5]">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=500"
+                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                                    alt="Instructor">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Sarah Smith</h3>
+                            <p class="text-sm text-brand-600 font-medium">Defensive Specialist</p>
+                        </div>
+                        <div class="group text-center">
+                            <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5]">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=500"
+                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                                    alt="Instructor">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">James Doe</h3>
+                            <p class="text-sm text-brand-600 font-medium">Road Test Expert</p>
+                        </div>
+                        <div class="group text-center">
+                            <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5]">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=500"
+                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                                    alt="Instructor">
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Maria Garcia</h3>
+                            <p class="text-sm text-brand-600 font-medium">Teen Ed Coach</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VIEW: CONTACT US -->
+        <div id="view-contact" class="page-view hidden">
+            <!-- 1. Hero -->
+            <section class="py-20 bg-brand-600 text-white relative overflow-hidden">
+                <div
+                    class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
+                </div>
+                <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+                    <h1 class="text-4xl md:text-5xl font-heading font-bold mb-6">Get in Touch</h1>
+                    <p class="text-brand-100 text-lg">Have questions about our courses or need help booking? We're here
+                        for you.</p>
+                </div>
+            </section>
+
+            <div class="max-w-7xl mx-auto px-4 py-20">
+                <div class="grid lg:grid-cols-3 gap-12">
+                    <!-- 2. Contact Info (Left) -->
+                    <div class="space-y-8">
+                        <div>
+                            <h2 class="text-2xl font-heading font-bold mb-6 text-slate-900 dark:text-white">Contact
+                                Information</h2>
+                            <p class="text-slate-600 dark:text-slate-400 mb-8">Fill up the form and our team will get
+                                back to you within 24 hours.</p>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-brand-100 dark:bg-brand-900/30 rounded-xl flex items-center justify-center text-brand-600 flex-shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white">Phone</h4>
+                                <p class="text-slate-600 dark:text-slate-400">+1 (555) 123-4567</p>
+                                <p class="text-slate-500 text-sm">Mon-Fri 8am-8pm</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-brand-100 dark:bg-brand-900/30 rounded-xl flex items-center justify-center text-brand-600 flex-shrink-0">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white">Email</h4>
+                                <p class="text-slate-600 dark:text-slate-400">support@drivemaster.com</p>
+                                <p class="text-slate-500 text-sm">Replies within 24h</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-brand-100 dark:bg-brand-900/30 rounded-xl flex items-center justify-center text-brand-600 flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white">Main Office</h4>
+                                <p class="text-slate-600 dark:text-slate-400">123 Driver Ave, Suite 100<br>New York, NY
+                                    10001</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Contact Form (Right) -->
+                    <div class="lg:col-span-2">
+                        <form onsubmit="event.preventDefault(); showToast('Message Sent Successfully!');"
+                            class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl p-8 md:p-12 border border-slate-100 dark:border-slate-700">
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">First
+                                        Name</label>
+                                    <input type="text"
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all"
+                                        placeholder="John">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Last
+                                        Name</label>
+                                    <input type="text"
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all"
+                                        placeholder="Doe">
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Email
+                                    Address</label>
+                                <input type="email"
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all"
+                                    placeholder="john@example.com">
+                            </div>
+                            <div class="mb-6">
+                                <label
+                                    class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Subject</label>
+                                <select
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all">
+                                    <option>General Inquiry</option>
+                                    <option>Booking Help</option>
+                                    <option>Partnership</option>
+                                </select>
+                            </div>
+                            <div class="mb-8">
+                                <label
+                                    class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Message</label>
+                                <textarea rows="5"
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all"
+                                    placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-500/30 transition-all transform hover:-translate-y-1">Send
+                                Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 4. Map Section -->
+                <div class="mt-20 rounded-3xl overflow-hidden shadow-2xl h-96 bg-slate-200 relative">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1600"
+                        class="w-full h-full object-cover" alt="Location Map">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center group cursor-pointer">
+                        <div
+                            class="bg-white px-6 py-3 rounded-full shadow-xl font-bold text-slate-900 flex items-center gap-2 transform group-hover:scale-110 transition-transform">
+                            <i data-lucide="map-pin" class="text-brand-600"></i> View on Google Maps
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Working Hours Table (New) -->
+                <div
+                    class="mt-20 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+                    <div class="p-8 border-b dark:border-slate-700">
+                        <h3 class="font-bold text-xl text-slate-900 dark:text-white">Office Hours</h3>
+                        <p class="text-slate-500 text-sm">Best time to call or visit the office.</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                                <span class="font-medium">Monday - Friday</span>
+                                <span class="text-brand-600 font-bold">8:00 AM - 8:00 PM</span>
+                            </div>
+                            <div class="flex justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                                <span class="font-medium">Saturday</span>
+                                <span class="text-brand-600 font-bold">9:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="flex justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                                <span class="font-medium">Sunday</span>
+                                <span class="text-slate-400">Closed</span>
+                            </div>
+                            <div class="flex justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                                <span class="font-medium">Holidays</span>
+                                <span class="text-slate-400">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: GALLERY -->
+        <div id="view-gallery" class="page-view hidden">
+            <!-- 1. Hero -->
+            <div class="bg-slate-900 py-20 text-center text-white relative overflow-hidden">
+                <div
+                    class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+                </div>
+                <div class="max-w-4xl mx-auto px-4 relative z-10">
+                    <h1 class="text-5xl font-heading font-bold mb-6">Our Fleet & Moments</h1>
+                    <p class="text-slate-300 text-lg">Take a look at our modern vehicles, happy graduates, and
+                        state-of-the-art training facilities.</p>
+                </div>
+            </div>
+
+            <!-- 2. Categories -->
+            <div class="bg-slate-50 dark:bg-slate-950 py-6 border-b border-slate-200 dark:border-slate-800 z-30">
+                <div class="max-w-7xl mx-auto px-4 flex justify-center gap-4 overflow-x-auto no-scrollbar">
+                    <button
+                        class="px-6 py-2 rounded-full bg-brand-600 text-white font-bold text-sm shadow-lg">All</button>
+                    <button
+                        class="px-6 py-2 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium text-sm border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-colors">Fleet</button>
+                    <button
+                        class="px-6 py-2 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium text-sm border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-colors">Graduates</button>
+                    <button
+                        class="px-6 py-2 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium text-sm border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-colors">Training</button>
+                </div>
+            </div>
+
+            <!-- 3. Masonry Grid -->
+            <div class="max-w-7xl mx-auto px-4 py-12">
+                <div class="masonry-grid">
+                    <!-- Item 1 -->
+                    <div class="masonry-item relative group rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=600"
+                            class="w-full h-auto transform group-hover:scale-110 transition-transform duration-700"
+                            alt="Car">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold">Sedan Fleet - Model 2023</p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="masonry-item relative group rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ebdd9?auto=format&fit=crop&q=80&w=600"
+                            class="w-full h-auto transform group-hover:scale-110 transition-transform duration-700"
+                            alt="Car">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold">Sports Car Training</p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="masonry-item relative group rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=600"
+                            class="w-full h-auto transform group-hover:scale-110 transition-transform duration-700"
+                            alt="Instructor">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold">Instructor Mark</p>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="masonry-item relative group rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=600"
+                            class="w-full h-auto transform group-hover:scale-110 transition-transform duration-700"
+                            alt="Road">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold">Highway Driving</p>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="masonry-item relative group rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&q=80&w=600"
+                            class="w-full h-auto transform group-hover:scale-110 transition-transform duration-700"
+                            alt="Graduate">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold">License Day Success</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Graduate Success Stories (New) -->
+            <section class="py-20 bg-white dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4">
+                    <h2 class="text-3xl font-heading font-bold mb-12 text-center text-slate-900 dark:text-white">Success
+                        Stories</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl text-center">
+                            <div
+                                class="w-20 h-20 mx-auto bg-white dark:bg-slate-700 rounded-full flex items-center justify-center mb-4 text-2xl">
+                                🎉</div>
+                            <p class="text-slate-600 dark:text-slate-300 italic mb-4">"Passed my test on the first try!
+                                The parallel parking tips saved me."</p>
+                            <h4 class="font-bold">Jessica L.</h4>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl text-center">
+                            <div
+                                class="w-20 h-20 mx-auto bg-white dark:bg-slate-700 rounded-full flex items-center justify-center mb-4 text-2xl">
+                                🚗</div>
+                            <p class="text-slate-600 dark:text-slate-300 italic mb-4">"Finally overcame my fear of
+                                highways. My instructor was amazing."</p>
+                            <h4 class="font-bold">David K.</h4>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl text-center">
+                            <div
+                                class="w-20 h-20 mx-auto bg-white dark:bg-slate-700 rounded-full flex items-center justify-center mb-4 text-2xl">
+                                🏆</div>
+                            <p class="text-slate-600 dark:text-slate-300 italic mb-4">"Best driving school in the city.
+                                Flexible scheduling for my college classes."</p>
+                            <h4 class="font-bold">Sophia M.</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Social Proof / Instagram Feed -->
+            <section class="py-12 bg-slate-100 dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                    <h3 class="text-xl font-bold mb-6 text-slate-900 dark:text-white">Follow us on Instagram</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div
+                            class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=300"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i data-lucide="instagram" class="text-white w-8 h-8"></i>
+                            </div>
+                        </div>
+                        <div
+                            class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=300"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i data-lucide="instagram" class="text-white w-8 h-8"></i>
+                            </div>
+                        </div>
+                        <div
+                            class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&q=80&w=300"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i data-lucide="instagram" class="text-white w-8 h-8"></i>
+                            </div>
+                        </div>
+                        <div
+                            class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80&w=300"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i data-lucide="instagram" class="text-white w-8 h-8"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VIEW: SERVICES (Expanded with Curriculum) -->
+        <div id="view-services" class="page-view hidden">
+            <!-- Header -->
+            <div class="bg-slate-900 py-12 md:py-16 lg:py-20 text-center text-white relative overflow-hidden">
+                <div
+                    class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+                </div>
+                <div class="max-w-4xl mx-auto px-4 relative z-10">
+                    <h1 class="text-5xl font-heading font-bold mb-6">SERVICES</h1>
+                    <p class="text-slate-300 text-lg">Comprehensive programs designed for every skill level.</p>
+                </div>
+            </div>
+
+            <!-- 1. Learning Path / Curriculum -->
+            <section class="py-20 bg-slate-50 dark:bg-slate-900">
+                <div class="max-w-5xl mx-auto px-4">
+                    <h2 class="text-3xl font-heading font-bold mb-12 text-center text-slate-900 dark:text-white">Our
+                        Learning Path</h2>
+                    <div class="space-y-0">
+                        <!-- Week 1-2 -->
+                        <div class="relative flex gap-6">
+                            <div class="flex flex-col items-center">
+                                <div
+                                    class="w-12 h-12 bg-brand-600 rounded-full flex items-center justify-center text-white font-bold z-10 ring-4 ring-slate-50 dark:ring-slate-900">
+                                    1</div>
+                                <div class="w-0.5 h-full bg-slate-200 dark:bg-slate-700"></div>
+                            </div>
+                            <div class="pb-12 pt-2">
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white">Weeks 1-2: The Basics</h4>
+                                <p class="text-slate-600 dark:text-slate-400">Vehicle controls, starting/stopping,
+                                    steering, and residential driving.</p>
+                            </div>
+                        </div>
+                        <!-- Week 3-4 -->
+                        <div class="relative flex gap-6">
+                            <div class="flex flex-col items-center">
+                                <div
+                                    class="w-12 h-12 bg-brand-600 rounded-full flex items-center justify-center text-white font-bold z-10 ring-4 ring-slate-50 dark:ring-slate-900">
+                                    2</div>
+                                <div class="w-0.5 h-full bg-slate-200 dark:bg-slate-700"></div>
+                            </div>
+                            <div class="pb-12 pt-2">
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white">Weeks 3-4: Parking & Turns
+                                </h4>
+                                <p class="text-slate-600 dark:text-slate-400">Parallel parking, 3-point turns, lane
+                                    changing, and traffic lights.</p>
+                            </div>
+                        </div>
+                        <!-- Week 5+ -->
+                        <div class="relative flex gap-6">
+                            <div class="flex flex-col items-center">
+                                <div
+                                    class="w-12 h-12 bg-brand-600 rounded-full flex items-center justify-center text-white font-bold z-10 ring-4 ring-slate-50 dark:ring-slate-900">
+                                    3</div>
+                            </div>
+                            <div class="pt-2">
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white">Weeks 5+: Advanced & Road
+                                    Test</h4>
+                                <p class="text-slate-600 dark:text-slate-400">Highway merging, defensive driving, mock
+                                    road tests, and DMV prep.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Fleet Options -->
+            <section class="py-20 bg-white dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4">
+                    <h2 class="text-3xl font-heading font-bold mb-12 text-center text-slate-900 dark:text-white">Train
+                        on Modern Vehicles</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div
+                            class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 text-center border dark:border-slate-700 hover:shadow-lg transition-shadow">
+                            <div
+                                class="w-16 h-16 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-600 shadow-sm">
+                                <i data-lucide="car" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-white">Sedan Class</h3>
+                            <p class="text-sm text-slate-500">Toyota Corolla / Hyundai Elantra. Great for beginners.</p>
+                        </div>
+                        <div
+                            class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 text-center border dark:border-slate-700 hover:shadow-lg transition-shadow">
+                            <div
+                                class="w-16 h-16 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-600 shadow-sm">
+                                <i data-lucide="truck" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-white">SUV Class</h3>
+                            <p class="text-sm text-slate-500">Honda CR-V / Toyota RAV4. For those needing space.</p>
+                        </div>
+                        <div
+                            class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 text-center border dark:border-slate-700 hover:shadow-lg transition-shadow">
+                            <div
+                                class="w-16 h-16 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-600 shadow-sm">
+                                <i data-lucide="cog" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-white">Manual Trans.</h3>
+                            <p class="text-sm text-slate-500">Available for stick-shift training.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Pricing -->
+            <div class="max-w-7xl mx-auto px-4 py-20">
+                <h2 class="text-3xl font-heading font-bold mb-12 text-center text-slate-900 dark:text-white">Simple
+                    Pricing</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Basic -->
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-lg border border-slate-100 dark:border-slate-700 hover:shadow-2xl transition-shadow">
+                        <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Beginner</h3>
+                        <div class="text-4xl font-bold text-slate-900 dark:text-white mb-6">$450</div>
+                        <ul class="space-y-4 mb-8 text-slate-600 dark:text-slate-400">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-brand-500"></i> 10
+                                Hours Driving</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-brand-500"></i> Basic
+                                Theory PDF</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-brand-500"></i>
+                                Door-to-door pickup</li>
+                        </ul>
+                        <button onclick="navigateTo('booking')"
+                            class="w-full py-3 border-2 border-brand-600 text-brand-600 dark:text-brand-400 rounded-xl font-bold hover:bg-brand-50 dark:hover:bg-slate-700 transition-colors">Select</button>
+                    </div>
+                    <!-- Standard -->
+                    <div
+                        class="bg-slate-900 dark:bg-brand-900 text-white rounded-3xl p-8 shadow-2xl transform md:-translate-y-4 relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 bg-brand-500 text-white text-xs font-bold px-4 py-1 rounded-bl-xl">
+                            BEST VALUE</div>
+                        <h3 class="text-xl font-bold mb-2">Standard</h3>
+                        <div class="text-4xl font-bold mb-6">$800</div>
+                        <ul class="space-y-4 mb-8 text-slate-300">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-brand-400"></i> 20
+                                Hours Driving</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-brand-400"></i>
+                                Highway & Night Lessons</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-brand-400"></i> Mock
+                                Road Test</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-brand-400"></i> Car
+                                for Road Test</li>
+                        </ul>
+                        <button onclick="navigateTo('booking')"
+                            class="w-full py-3 bg-brand-500 hover:bg-brand-600 text-white rounded-xl font-bold transition-colors">Select</button>
+                    </div>
+                    <!-- Intensive -->
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-lg border border-slate-100 dark:border-slate-700 hover:shadow-2xl transition-shadow">
+                        <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Intensive</h3>
+                        <div class="text-4xl font-bold text-slate-900 dark:text-white mb-6">$1200</div>
+                        <ul class="space-y-4 mb-8 text-slate-600 dark:text-slate-400">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-brand-500"></i> 30
+                                Hours Driving</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-brand-500"></i>
+                                License Test Car Rental</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-brand-500"></i>
+                                Priority Booking</li>
+                        </ul>
+                        <button onclick="navigateTo('booking')"
+                            class="w-full py-3 border-2 border-brand-600 text-brand-600 dark:text-brand-400 rounded-xl font-bold hover:bg-brand-50 dark:hover:bg-slate-700 transition-colors">Select</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Methodology -->
+            <section class="py-20 bg-slate-50 dark:bg-slate-800">
+                <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-heading font-bold mb-6 text-slate-900 dark:text-white">The DriveMaster
+                            Method</h2>
+                        <p class="text-slate-600 dark:text-slate-300 mb-6">We don't just teach you how to pass a test;
+                            we teach you how to survive on the road. Our curriculum is based on defensive driving
+                            principles.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <div class="bg-green-100 text-green-600 p-1 rounded mt-1"><i data-lucide="shield"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">Defensive Driving</h4>
+                                    <p class="text-sm text-slate-500">Anticipate hazards and react calmly.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="bg-blue-100 text-blue-600 p-1 rounded mt-1"><i data-lucide="map"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">Spatial Awareness</h4>
+                                    <p class="text-sm text-slate-500">Master judging distances and blind spots.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white dark:bg-slate-700 rounded-2xl h-80 overflow-hidden relative shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1557404763-69708cd8b9ce?auto=format&fit=crop&q=80&w=800"
+                            class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                            <h3 class="text-2xl font-bold text-white shadow-black drop-shadow-lg">Interactive Road Map
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. FAQ Section -->
+            <section class="py-16 bg-white dark:bg-slate-900">
+                <div class="max-w-3xl mx-auto px-4">
+                    <h2 class="text-2xl font-heading font-bold mb-8 text-center text-slate-900 dark:text-white">Service
+                        Questions</h2>
+                    <div class="space-y-4">
+                        <details
+                            class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg shadow-sm border dark:border-slate-700">
+                            <summary class="font-semibold cursor-pointer text-slate-900 dark:text-white">Can I switch
+                                instructors?</summary>
+                            <p class="mt-2 text-slate-500 text-sm">Yes, if you feel your learning style doesn't match,
+                                we can reassign you at no extra cost.</p>
+                        </details>
+                        <details
+                            class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg shadow-sm border dark:border-slate-700">
+                            <summary class="font-semibold cursor-pointer text-slate-900 dark:text-white">Do you offer
+                                automatic or manual lessons?
+                            </summary>
+                            <p class="mt-2 text-slate-500 text-sm">We offer both. You can specify your preference during
+                                the booking process.</p>
+                        </details>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VIEW: CONTACT -->
+        <div id="view-contact" class="page-view hidden">
+            <!-- Header -->
+            <div class="bg-slate-900 py-12 md:py-16 lg:py-20 text-center text-white relative overflow-hidden">
+                <div
+                    class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+                </div>
+                <div class="max-w-4xl mx-auto px-4 relative z-10">
+                    <h1 class="text-5xl font-heading font-bold mb-6">Contact Us</h1>
+                    <p class="text-slate-300 text-lg">We'd love to hear from you. Get in touch with us.</p>
+                </div>
+            </div>
+
+            <section class="py-20 bg-slate-50 dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+                    <!-- Contact Info -->
+                    <div>
+                        <h2 class="text-3xl font-heading font-bold mb-8 text-slate-900 dark:text-white">Get in Touch
+                        </h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl flex items-center justify-center text-brand-600 shadow-sm border dark:border-slate-700">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-lg">Visit Us</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">123 Driving School Lane<br>Cityville,
+                                        ST 12345</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl flex items-center justify-center text-brand-600 shadow-sm border dark:border-slate-700">
+                                    <i data-lucide="phone" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-lg">Call Us</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">+1 (555) 123-4567<br>Mon-Sat: 9am -
+                                        6pm</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl flex items-center justify-center text-brand-600 shadow-sm border dark:border-slate-700">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-lg">Email Us</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">
+                                        support@drivemaster.com<br>info@drivemaster.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map Placeholder -->
+                        <div class="mt-8 h-64 bg-slate-200 dark:bg-slate-800 rounded-2xl overflow-hidden relative">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968459391!3d40.74844797932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-slate-100 dark:border-slate-700">
+                        <h3 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Send a Message</h3>
+                        <form class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 dark:text-slate-300">First Name</label>
+                                    <input type="text"
+                                        class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg outline-none focus:border-brand-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 dark:text-slate-300">Last Name</label>
+                                    <input type="text"
+                                        class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg outline-none focus:border-brand-500 transition-colors">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1 dark:text-slate-300">Email Address</label>
+                                <input type="email"
+                                    class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg outline-none focus:border-brand-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1 dark:text-slate-300">Subject</label>
+                                <select
+                                    class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg outline-none focus:border-brand-500 transition-colors">
+                                    <option>General Inquiry</option>
+                                    <option>Booking Issue</option>
+                                    <option>Feedback</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1 dark:text-slate-300">Message</label>
+                                <textarea rows="4"
+                                    class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg outline-none focus:border-brand-500 transition-colors"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition-colors">Send
+                                Message</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Column 1: Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer group">
+                        <div
+                            class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform">
+                            <i data-lucide="car" class="w-6 h-6"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span
+                                class="font-heading font-bold text-xl tracking-tight leading-none text-slate-900 dark:text-white">DriveMaster</span>
+                            <span
+                                class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Professional
+                                School</span>
+                        </div>
+                    </a>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">The most trusted platform for
+                        booking driving lessons. Safe, reliable, and professional.</p>
+                </div>
+
+                <!-- Column 2: Company -->
+                <div>
+                    <h4 class="font-bold mb-6 dark:text-white">Company</h4>
+                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="about.html" class="hover:text-brand-600 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-600 transition-colors">Careers</a></li>
+                        <li><a href="index.html" class="hover:text-brand-600 transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Support -->
+                <div>
+                    <h4 class="font-bold mb-6 dark:text-white">Support</h4>
+                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="contact.html" class="hover:text-brand-600 transition-colors">Help Center</a></li>
+                        <li><a href="services.html" class="hover:text-brand-600 transition-colors">Terms of Service</a>
+                        </li>
+                        <li><a href="#" class="hover:text-brand-600 transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Newsletter -->
+                <div>
+                    <h4 class="font-bold mb-6 dark:text-white">Newsletter</h4>
+                    <div class="flex flex-col gap-3">
+                        <input type="email" placeholder="Enter your email"
+                            class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-brand-500 transition-colors">
+                        <button
+                            class="bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-brand-700 transition-colors">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div
+                class="border-t border-slate-100 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+                <p>&copy; 2026 DriveMaster Inc. All rights reserved and developed by <a href="https://magtan.com"
+                        target="_blank" class="hover:text-brand-600">Sivanika</a>.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-brand-600"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-brand-600"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-brand-600"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast"
+        class="fixed bottom-5 right-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-4 rounded-xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 z-50">
+        <div class="bg-brand-500 rounded-full p-1"><i data-lucide="check"
+                class="w-4 h-4 text-white dark:text-slate-900"></i></div>
+        <span id="toast-msg" class="font-medium">Success</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Icons
+        function initIcons() { lucide.createIcons(); }
+
+        // Initialize Icons
+        function initIcons() { lucide.createIcons(); }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+
+        // Theme Logic
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+                if (icon) icon.setAttribute('data-lucide', 'moon');
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+                if (icon) icon.setAttribute('data-lucide', 'sun');
+            }
+            initIcons();
+        }
+
+        // RTL Logic
+        function toggleRTL() {
+            const body = document.body;
+            const html = document.documentElement;
+            if (body.classList.contains('ltr')) {
+                body.classList.remove('ltr');
+                body.classList.add('rtl');
+                html.setAttribute('dir', 'rtl');
+                showToast("Switched to RTL");
+            } else {
+                body.classList.remove('rtl');
+                body.classList.add('ltr');
+                html.setAttribute('dir', 'ltr');
+                showToast("Switched to LTR");
+            }
+        }
+
+        // Toast Notification
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-msg');
+            msgEl.innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 3000);
+        }
+
+        // Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check system preference for theme
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                if (document.getElementById('theme-icon')) document.getElementById('theme-icon').setAttribute('data-lucide', 'sun');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            initIcons();
+        });
+    </script>
+    <!-- siva@03nika -->
+</body>
+
+</html>
