@@ -111,16 +111,16 @@
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center gap-1 xl:gap-2">
-                    <div class="relative group px-2 py-2">
+                <div class="hidden lg:flex items-center gap-1">
+                    <div class="relative group px-1.5 py-2">
                         <button
-                            class="flex items-center gap-1 text-sm font-bold text-brand-600 dark:text-brand-400 transition-colors">
+                            class="flex items-center gap-1 text-sm font-bold text-brand-600 dark:text-brand-400 transition-colors whitespace-nowrap">
                             Home <i data-lucide="chevron-down" class="w-4 h-4 text-brand-600"></i>
                         </button>
                         <div
                             class="absolute left-0 top-full mt-2 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 p-1">
                             <a href="index.html"
-                                class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">Classic
+                                class="block px-4 py-2.5 text-sm hover:bg-slate-50 dark:bg-slate-800 hover:text-brand-600 rounded-lg transition-colors">Classic
                                 Style</a>
                             <a href="home2.html"
                                 class="block px-4 py-2.5 text-sm bg-slate-50 dark:bg-slate-800 text-brand-600 rounded-lg transition-colors">Modern
@@ -128,18 +128,16 @@
                         </div>
                     </div>
                     <a href="about.html"
-                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">About</a>
+                        class="px-1.5 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors whitespace-nowrap">About</a>
                     <a href="services.html"
-                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Services</a>
+                        class="px-1.5 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors whitespace-nowrap">Services</a>
                     <a href="gallery.html"
-                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Gallery</a>
+                        class="px-1.5 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors whitespace-nowrap">Gallery</a>
                     <a href="contact.html"
-                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Contact</a>
-                        <a href="admin.html"
-                        class="px-2 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Admin</a>      
-                        <div class="h-4 w-px bg-slate-300 dark:bg-slate-700 mx-1 xl:mx-2"></div>
+                        class="px-1.5 xl:px-3 py-2 text-sm font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors whitespace-nowrap">Contact</a>
+                    <div class="h-4 w-px bg-slate-300 dark:bg-slate-700 mx-1"></div>
                     <a href="booking.html"
-                        class="px-2 xl:px-3 py-2 text-sm font-bold text-brand-600 hover:text-brand-700 transition-colors border border-brand-200 rounded-lg bg-brand-50 dark:bg-brand-900/20 dark:border-brand-800">Book
+                        class="px-2 xl:px-3 py-2 text-sm font-bold text-brand-600 hover:text-brand-700 transition-colors border border-brand-200 rounded-lg bg-brand-50 dark:bg-brand-900/20 dark:border-brand-800 whitespace-nowrap">Book
                         Test</a>
                 </div>
 
@@ -170,50 +168,93 @@
                 </div>
             </div>
         </div>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed bg-white dark:bg-slate-900 z-40 hidden flex-col p-6 space-y-6 lg:hidden">
-            <div class="flex justify-between items-center mb-4">
-                <span class="font-heading font-bold text-xl">Menu</span>
-                <button onclick="toggleMobileMenu()"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <a href="index.html" class="text-lg font-medium border-b pb-2">Home</a>
-            <a href="home2.html" class="text-lg font-bold border-b pb-2 text-brand-600 font-heading">Modern Home</a>
-            <a href="about.html" class="text-lg font-medium border-b pb-2">About Us</a>
-            <a href="services.html" class="text-lg font-medium border-b pb-2">Services</a>
-            <a href="gallery.html" class="text-lg font-medium border-b pb-2">Gallery</a>
-            <a href="contact.html" class="text-lg font-medium border-b pb-2">Contact</a>
-            <a href="login.html" class="text-lg font-medium border-b pb-2">Login</a>
-            <a href="register.html" class="text-lg font-medium border-b pb-2">Register</a>
-            <a href="dashboard.html" class="text-lg font-medium border-b pb-2 text-brand-600">My
-                Dashboard</a>
-            <a href="admin.html" class="text-lg font-medium border-b pb-2 text-brand-600">Admin</a> 
-            <!-- Mobile Controls -->
-            <div class="flex items-center gap-4 mt-4">
-                <button onclick="toggleRTL()"
-                    class="p-2 border rounded-lg text-slate-500 hover:text-brand-600 flex items-center gap-2 w-full justify-center">
-                    <i data-lucide="languages" class="w-5 h-5"></i> <span>RTL/LTR</span>
-                </button>
-                <button onclick="toggleDarkMode()"
-                    class="p-2 border rounded-lg text-slate-500 hover:text-brand-600 flex items-center gap-2 w-full justify-center">
-                    <i id="mobile-theme-icon" data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
-                </button>
-            </div>
-
-            <a href="booking.html"
-                class="w-full bg-brand-600 text-white py-4 rounded-xl font-bold mt-2 text-center">Start Learning</a>
-        </div>
     </nav>
+    <!-- siv@nik@ -->
+
+    <!-- Mobile Menu — outside nav to avoid stacking context conflict -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-white dark:bg-slate-900 z-[999] hidden flex-col pt-20 px-6 pb-6 overflow-y-auto lg:hidden">
+        <!-- Header -->
+        <div class="flex justify-between items-center pb-4 mb-3 border-b border-slate-200 dark:border-slate-700">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white">
+                    <i data-lucide="car" class="w-4 h-4"></i>
+                </div>
+                <span class="font-heading font-bold text-xl">DriveMaster</span>
+            </div>
+            <button onclick="toggleMobileMenu()"
+                class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <!-- Nav Links -->
+        <nav class="flex-1 space-y-1">
+            <a href="index.html"
+                class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">
+                <i data-lucide="home" class="w-5 h-5"></i> Home
+            </a>
+            <a href="home2.html"
+                class="flex items-center gap-3 px-3 py-3 rounded-xl bg-brand-50 dark:bg-brand-900/20 text-brand-600 font-bold">
+                <i data-lucide="layout" class="w-5 h-5"></i> Modern Home
+            </a>
+            <a href="about.html"
+                class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">
+                <i data-lucide="users" class="w-5 h-5"></i> About Us
+            </a>
+            <a href="services.html"
+                class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">
+                <i data-lucide="book-open" class="w-5 h-5"></i> Services
+            </a>
+            <a href="gallery.html"
+                class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">
+                <i data-lucide="image" class="w-5 h-5"></i> Gallery
+            </a>
+            <a href="contact.html"
+                class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">
+                <i data-lucide="mail" class="w-5 h-5"></i> Contact
+            </a>
+            <div class="pt-2 border-t border-slate-200 dark:border-slate-700 mt-2 space-y-1">
+                <a href="login.html"
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">
+                    <i data-lucide="log-in" class="w-5 h-5"></i> Login
+                </a>
+                <a href="register.html"
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">
+                    <i data-lucide="user-plus" class="w-5 h-5"></i> Register
+                </a>
+                <a href="dashboard.html"
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 font-medium text-brand-600 transition-colors">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> My Dashboard
+                </a>
+            </div>
+        </nav>
+        <!-- Theme Controls -->
+        <div class="flex items-center gap-3 pt-4 mt-2 border-t border-slate-200 dark:border-slate-700">
+            <button onclick="toggleRTL()"
+                class="flex-1 p-2.5 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-2 justify-center text-sm font-medium transition-colors">
+                <i data-lucide="languages" class="w-4 h-4"></i> RTL/LTR
+            </button>
+            <button onclick="toggleDarkMode()"
+                class="flex-1 p-2.5 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-2 justify-center text-sm font-medium transition-colors">
+                <i id="mobile-theme-icon" data-lucide="moon" class="w-4 h-4"></i> Theme
+            </button>
+        </div>
+        <!-- Book Test CTA -->
+        <a href="booking.html"
+            class="mt-4 w-full bg-brand-600 hover:bg-brand-700 text-white py-4 rounded-2xl font-bold text-center text-lg block shadow-lg shadow-brand-500/20 transition-colors">
+            📅 Book a Lesson
+        </a>
+    </div>
 
     <main class="min-h-screen">
         <!-- VIEW: HOME 2 (Modern SaaS) -->
         <div id="view-home2" class="page-view">
             <!-- 1. Split Hero -->
             <section
-                class="relative min-h-[90vh] flex items-center bg-slate-50 dark:bg-slate-900 overflow-hidden pt-24 md:pt-0">
+                class="relative min-h-[90vh] flex items-center bg-brand-50 dark:bg-brand-900/20 overflow-hidden pt-24 md:pt-20 ">
                 <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center w-full">
-                    <div class="space-y-8">
-                        <h1 class="text-6xl font-heading font-bold tracking-tight text-slate-900 dark:text-white">
+                    <div class="space-y-8 ">
+                        <h1 class="text-6xl font-heading font-bold tracking-tight text-slate-900 dark:text-white ">
                             The Future of <br><span class="text-brand-600">Driver Education.</span>
                         </h1>
                         <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -301,7 +342,7 @@
                             need to drive</h2>
                     </div>
                     <div class="grid md:grid-cols-3 grid-rows-2 gap-6 h-auto md:h-[600px]">
-                        <!-- <div
+                        <div
                             class="md:col-span-2 md:row-span-2 bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-lg border dark:border-slate-700 flex flex-col justify-between relative overflow-hidden group">
                             <div class="relative z-10">
                                 <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Real-time Instructor
@@ -317,14 +358,6 @@
                             <div
                                 class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-600 rounded-full opacity-10 group-hover:scale-110 transition-transform duration-500">
                             </div>
-                        </div> -->
-                        <div
-                            class="bg-white dark:bg-slate-800 rounded-3xl p-8 flex flex-col justify-center border dark:border-slate-700">
-                            <i data-lucide="globe" class="w-10 h-10 mb-4 opacity-80"></i>
-                            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Real-time Instructor
-                                    Tracking</h3>
-                                <p class="text-slate-500 max-w-md">See exactly when your instructor is arriving for
-                                    pickup. Live GPS tracking integrated into your student app.</p>
                         </div>
                         <div class="bg-brand-600 text-white rounded-3xl p-8 flex flex-col justify-center">
                             <i data-lucide="video" class="w-10 h-10 mb-4 opacity-80"></i>
@@ -786,8 +819,11 @@
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
+            const isOpen = !menu.classList.contains('hidden');
             menu.classList.toggle('hidden');
             menu.classList.toggle('flex');
+            document.body.style.overflow = isOpen ? '' : 'hidden';
+            lucide.createIcons();
         }
 
         function toggleDarkMode() {
