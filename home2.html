@@ -96,7 +96,7 @@
     <nav
         class="fixed w-full z-50 transition-all duration-300 glass-panel border-b border-slate-200 dark:border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
+            <div class="flex justify-between h-20 items-center gap-2">
                 <!-- Logo -->
                 <a href="index.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
                     <div
@@ -111,7 +111,7 @@
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center gap-1">
+                <div class="hidden lg:flex items-center gap-0 xl:gap-1">
                     <div class="relative group px-1.5 py-2">
                         <button
                             class="flex items-center gap-1 text-sm font-bold text-brand-600 dark:text-brand-400 transition-colors whitespace-nowrap">
@@ -142,7 +142,7 @@
                 </div>
 
                 <!-- Controls -->
-                <div class="hidden lg:flex items-center space-x-4">
+                <div class="hidden lg:flex items-center gap-1 xl:gap-2">
                     <button onclick="toggleRTL()" class="p-2 text-slate-500 hover:text-brand-600 transition-colors"><i
                             data-lucide="languages" class="w-5 h-5"></i></button>
                     <button onclick="toggleDarkMode()"
@@ -154,11 +154,9 @@
                     </a>
                     <div class="h-6 w-px bg-slate-300 dark:bg-slate-700"></div>
                     <a href="login.html"
-                        class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">Login</a>
+                        class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-3 xl:px-5 py-2 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap">Login</a>
                     <a href="register.html"
-                        class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">Sign
-                        up
-                    </a>
+                        class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-3 xl:px-5 py-2 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap">Sign up</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -582,8 +580,12 @@
                                     class="bg-brand-500 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest w-fit mb-3">Head
                                     Instructor</span>
                                 <h3 class="text-3xl font-bold mb-1">John Doe</h3>
-                                <p class="text-slate-300 text-sm mb-4">25+ Years Experience • Defensive Driving Expert
-                                </p>
+                                <p class="text-slate-300 text-sm mb-4">25+ Years Experience • Defensive Driving Expert</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-white/15 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">🏆 1,200+ Students Passed</span>
+                                    <span class="bg-white/15 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">🚗 Defensive Driving</span>
+                                    <span class="bg-white/15 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">🌙 Night Driving</span>
+                                </div>
                                 <div class="flex items-center gap-4 border-t border-white/20 pt-4">
                                     <div class="flex gap-1 text-yellow-400">
                                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
@@ -597,46 +599,121 @@
                             </div>
                         </div>
 
-                        <!-- Specializations Grid -->
+                        <!-- Safety First Card -->
                         <div
-                            class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 flex flex-col justify-between group">
-                            <div
-                                class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-600 mb-4 group-hover:rotate-12 transition-transform">
-                                <i data-lucide="shield-check" class="w-6 h-6"></i>
-                            </div>
+                            class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 flex flex-col justify-between group hover:shadow-lg transition-all duration-300">
                             <div>
+                                <div
+                                    class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-600 mb-4 group-hover:rotate-12 transition-transform">
+                                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                                </div>
                                 <h4 class="font-bold text-slate-900 dark:text-white mb-2">Safety First</h4>
-                                <p class="text-slate-500 text-xs">Modern safety protocols on every lesson.</p>
+                                <p class="text-slate-500 text-xs leading-relaxed mb-4">Modern safety protocols enforced on every single lesson. Dual-control vehicles keep you protected at all times.</p>
+                                <ul class="space-y-1.5">
+                                    <li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i> Dual-Control Vehicles</li>
+                                    <li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i> DVSA Certified Instructors</li>
+                                    <li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i> Fully Insured Lessons</li>
+                                </ul>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+                                <span class="text-blue-600 text-xs font-bold">Zero accidents since 2010 ✓</span>
                             </div>
                         </div>
 
-                        <div class="p-6 rounded-3xl bg-brand-600 text-white flex flex-col justify-between group">
-                            <div
-                                class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-white mb-4 group-hover:-rotate-12 transition-transform">
-                                <i data-lucide="clock" class="w-6 h-6"></i>
-                            </div>
+                        <!-- Flexible Hours Card -->
+                        <div class="p-6 rounded-3xl bg-brand-600 text-white flex flex-col justify-between group hover:bg-brand-700 transition-all duration-300">
                             <div>
-                                <h4 class="font-bold mb-2">Flexible Hours</h4>
-                                <p class="text-brand-100 text-xs">Lessons available early morning to late night.</p>
+                                <div
+                                    class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-white mb-4 group-hover:-rotate-12 transition-transform">
+                                    <i data-lucide="clock" class="w-6 h-6"></i>
+                                </div>
+                                <h4 class="font-bold text-lg mb-2">Flexible Hours</h4>
+                                <p class="text-brand-100 text-xs leading-relaxed mb-4">Lessons available from 6 AM to 10 PM, 7 days a week — including weekends and public holidays.</p>
+                                <ul class="space-y-1.5">
+                                    <li class="flex items-center gap-2 text-xs text-brand-100"><i data-lucide="sun" class="w-3.5 h-3.5 shrink-0"></i> Morning slots from 6:00 AM</li>
+                                    <li class="flex items-center gap-2 text-xs text-brand-100"><i data-lucide="moon" class="w-3.5 h-3.5 shrink-0"></i> Evening slots till 10:00 PM</li>
+                                    <li class="flex items-center gap-2 text-xs text-brand-100"><i data-lucide="calendar" class="w-3.5 h-3.5 shrink-0"></i> Weekends &amp; holidays</li>
+                                </ul>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-white/20">
+                                <span class="text-white/80 text-xs font-bold">Book any slot in &lt; 60 seconds</span>
                             </div>
                         </div>
 
+                        <!-- Jane Smith Card -->
                         <div
-                            class="md:col-span-2 p-8 rounded-3xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-8 relative overflow-hidden group">
-                            <div class="w-32 h-32 rounded-2xl overflow-hidden shrink-0">
+                            class="md:col-span-2 p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300">
+                            <div class="w-28 h-28 rounded-2xl overflow-hidden shrink-0">
                                 <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400"
                                     class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
                                     alt="Jane Smith">
                             </div>
-                            <div class="relative z-10">
-                                <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-1">Jane Smith</h4>
-                                <p class="text-brand-600 text-xs font-bold uppercase mb-3">Automatic Expert</p>
-                                <p class="text-slate-500 text-sm">Specializing in nervous beginners and elderly drivers.
-                                    10+ years exp.</p>
+                            <div class="relative z-10 flex-1">
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-0.5">Jane Smith</h4>
+                                <p class="text-brand-600 text-xs font-bold uppercase mb-2">Automatic Specialist</p>
+                                <p class="text-slate-500 text-xs mb-3">Expert with nervous beginners &amp; elderly drivers. Calm, patient, and highly rated.</p>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="bg-brand-50 dark:bg-brand-900/30 text-brand-600 text-[10px] font-bold px-2 py-0.5 rounded-full">10+ Yrs Exp</span>
+                                    <span class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-bold px-2 py-0.5 rounded-full">⭐ 4.8 Rating</span>
+                                    <span class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-bold px-2 py-0.5 rounded-full">350+ Students</span>
+                                </div>
                             </div>
                             <div
                                 class="absolute -right-10 -bottom-10 w-40 h-40 bg-slate-50 dark:bg-slate-700 rounded-full opacity-50 transition-transform duration-500 group-hover:scale-110">
                             </div>
+                        </div>
+
+                        <!-- Mike Chen Card -->
+                        <div
+                            class="p-6 rounded-3xl bg-slate-900 dark:bg-slate-700 text-white flex flex-col justify-between group hover:bg-slate-800 transition-all duration-300 relative overflow-hidden">
+                            <div class="relative z-10">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-14 h-14 rounded-2xl overflow-hidden shrink-0 border-2 border-white/20">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
+                                            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
+                                            alt="Mike Chen">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-base leading-tight">Mike Chen</h4>
+                                        <p class="text-brand-400 text-[10px] font-bold uppercase">Highway Expert</p>
+                                    </div>
+                                </div>
+                                <p class="text-slate-300 text-xs leading-relaxed mb-3">Specialist in motorway &amp; highway driving. Helping drivers build confidence at high speeds.</p>
+                                <div class="flex items-center gap-1 text-yellow-400 mb-1">
+                                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                    <span class="text-white text-[10px] ml-1">4.9</span>
+                                </div>
+                                <span class="text-slate-400 text-[10px]">15 yrs exp • 600+ students</span>
+                            </div>
+                            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-brand-600/20 rounded-full"></div>
+                        </div>
+
+                        <!-- Sara Lee Card -->
+                        <div
+                            class="p-6 rounded-3xl bg-gradient-to-br from-purple-500 to-indigo-600 text-white flex flex-col justify-between group hover:from-purple-600 hover:to-indigo-700 transition-all duration-300 relative overflow-hidden">
+                            <div class="relative z-10">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-14 h-14 rounded-2xl overflow-hidden shrink-0 border-2 border-white/25">
+                                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200"
+                                            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
+                                            alt="Sara Lee">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-base leading-tight">Sara Lee</h4>
+                                        <p class="text-purple-200 text-[10px] font-bold uppercase">Theory Coach</p>
+                                    </div>
+                                </div>
+                                <p class="text-purple-100 text-xs leading-relaxed mb-3">Expert theory coach with a 98% first-attempt pass rate. Interactive mock tests and study plans tailored to you.</p>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">98% Pass Rate</span>
+                                    <span class="bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Mock Tests</span>
+                                </div>
+                            </div>
+                            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-white/10 rounded-full"></div>
                         </div>
                     </div>
                 </div>
